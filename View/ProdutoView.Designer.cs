@@ -1,4 +1,4 @@
-﻿namespace Projeto3.View
+namespace Projeto3.View
 {
 	partial class ProdutoView
 	{
