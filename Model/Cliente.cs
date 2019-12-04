@@ -2,14 +2,14 @@ using System;
 
 namespace Projeto3.Model {
 	public class Cliente {
-		public UInt64 codigo { get; set; }
-		public String nome { get; set; }
-    	public String cpf { get; set; }
-    	public String endereco { get; set; }
-    	public String bairro { get; set; }
-    	public String cep { get; set; }
-    	public String cidade { get; set; }
-    	public String telefone { get; set; }
-    	public String uf { get; set; }
+		public UInt64 Codigo { get; set; }
+		public String Nome { get; set; }
+    	public String CPF { get; set; }
+    	public String Endereco { get; set; }
+    	public String Bairro { get; set; }
+    	public String CEP { get; set; }
+    	public String Cidade { get; set; }
+    	public String Telefone { get; set; }
+    	public String UF { get; set; }
 	}
 }
