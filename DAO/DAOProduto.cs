@@ -17,24 +17,45 @@ namespace Projeto3.DAO
 
 		public DAOProduto(Conexao con)
 		{
+			preparaCadastrar(con);
+			preparaBuscar(con);
+			preparaListar(con);
+			preparaAtualizar(con);
+			preparaRemover(con);
+		}
+
+		private void preparaCadastrar(Conexao con)
+		{
 			comandoCadastrar = con.criarComando("INSERT INTO produto (nome, valor) VALUES (@nome, @valor);");
 			comandoCadastrar.Parameters.Add("@nome",  NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Parameters.Add("@valor", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoCadastrar.Prepare();
-
+		}
+		
+		private void preparaBuscar(Conexao con)
+		{
 			comandoBuscar = con.criarComando("SELECT codigo, nome, valor FROM produto WHERE codigo = @codigo;");
 			comandoBuscar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoBuscar.Prepare();
+		}
 
+		private void preparaListar(Conexao con)
+		{
 			comandoListar = con.criarComando("SELECT codigo, nome, valor FROM produto;");
-			comandoListar.Prepare();
-			
+			comandoListar.Prepare();			
+		}
+
+		private void preparaAtualizar(Conexao con)
+		{
 			comandoAtualizar = con.criarComando("UPDATE produto SET nome = @nome, valor = @valor WHERE codigo = @codigo;");
 			comandoAtualizar.Parameters.Add("@nome",   NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoAtualizar.Parameters.Add("@valor",  NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoAtualizar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoAtualizar.Prepare();
+		}
 
+		private void preparaRemover(Conexao con)
+		{
 			comandoRemover = con.criarComando("DELETE FROM produto WHERE codigo = @codigo;");
 			comandoRemover.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoRemover.Prepare();
