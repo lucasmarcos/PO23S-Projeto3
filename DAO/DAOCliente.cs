@@ -17,6 +17,15 @@ namespace Projeto3.DAO
 
 		public DAOCliente(Conexao con)
 		{
+			preparaCadastrar(con);
+			preparaBuscar(con);
+			preparaListar(con);
+			preparaAtualizar(con);
+			preparaRemover(con);
+		}
+
+		private void preparaCadastrar(Conexao con)
+		{
 			comandoCadastrar = con.criarComando("INSERT INTO cliente (nome, cpf, endereco, bairro, cep, cidade, telefone, uf) VALUES (@nome, @cpf, @endereco, @bairro, @cep, @cidade, @telefone, @uf);");
 			comandoCadastrar.Parameters.Add("@nome",     NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Parameters.Add("@cpf",      NpgsqlTypes.NpgsqlDbType.Varchar);
@@ -27,14 +36,23 @@ namespace Projeto3.DAO
 			comandoCadastrar.Parameters.Add("@telefone", NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Parameters.Add("@uf",       NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Prepare();
+		}
 
+		private void preparaBuscar(Conexao con)
+		{
 			comandoBuscar = con.criarComando("SELECT codigo, nome, cpf, endereco, bairro, cep, cidade, telefone, uf FROM cliente WHERE codigo = @codigo;");
 			comandoBuscar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoBuscar.Prepare();
-			
+		}
+
+		private void preparaListar(Conexao con)
+		{
 			comandoListar = con.criarComando("SELECT codigo, nome, cpf, endereco, bairro, cep, cidade, telefone, uf FROM cliente");
 			comandoListar.Prepare();
+		}
 
+		private void preparaAtualizar(Conexao con)
+		{
 			comandoAtualizar = con.criarComando("UPDATE cliente SET nome = @nome, cpf = @cpf, endereco = @endereco, bairro = @bairro, cep = @cep, cidade = @cidade, telefone = @telefone, uf = @uf WHERE codigo = @codigo");
 			comandoAtualizar.Parameters.Add("@nome",     NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoAtualizar.Parameters.Add("@cpf",      NpgsqlTypes.NpgsqlDbType.Varchar);
@@ -46,7 +64,10 @@ namespace Projeto3.DAO
 			comandoAtualizar.Parameters.Add("@uf",       NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoAtualizar.Parameters.Add("@codigo",   NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoAtualizar.Prepare();
+		}
 
+		private void preparaRemover(Conexao con)
+		{
 			comandoRemover = con.criarComando("DELETE FROM cliente WHERE codigo = @codigo;");
 			comandoRemover.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoRemover.Prepare();
@@ -57,7 +78,8 @@ namespace Projeto3.DAO
 			var lista = new List<Cliente>();
 
 			var reader = comandoListar.ExecuteReader();
-			while(reader.Read()) {
+			while(reader.Read()) 
+			{
 				var cliente = new Cliente();
 				lerLinha(reader, cliente);
 				lista.Add(cliente);
