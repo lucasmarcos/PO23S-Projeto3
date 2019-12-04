@@ -12,11 +12,14 @@ namespace Projeto3
 		static void Main()
 		{
 			var con = new Conexao();
-			
+			var daoProduto = new DAOProduto(con);
+			var daoCliente = new DAOCliente(con);
+			var daoNota = new DAONota(con);
+
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProdutoView());
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new ProdutoView(daoProduto));
 		}
 	}
 }

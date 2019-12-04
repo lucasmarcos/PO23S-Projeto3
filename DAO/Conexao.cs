@@ -4,7 +4,7 @@ using Npgsql;
 
 namespace Projeto3.DAO {
 	public class Conexao {
-		NpgsqlConnection con;
+		private NpgsqlConnection con;
 
 		public Conexao() {
 			var host = "localhost";
@@ -12,11 +12,17 @@ namespace Projeto3.DAO {
 			var pass = "aluno";
 			var db = "Projeto3";
 
-            var uri = String.Format(
-				"Host={0};Username={1};Password={2};Database={3}",
-                host, user, pass, db);
+			var uri = String.Format(
+					"Host={0};Username={1};Password={2};Database={3}",
+					host, user, pass, db);
 
-            con = new NpgsqlConnection(uri);
+			con = new NpgsqlConnection(uri);
+		}
+
+		public void Executa(String sql) {
+		}
+
+		public void Busca(String sql) {
 		}
 	}
 }
