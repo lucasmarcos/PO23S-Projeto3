@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS produto_comprado;
+DROP TABLE IF EXISTS nota;
+DROP TABLE IF EXISTS produto;
+DROP TABLE IF EXISTS cliente;
+
 CREATE TABLE cliente (
 	codigo SERIAL PRIMARY KEY,
 	nome VARCHAR,
@@ -13,19 +18,19 @@ CREATE TABLE cliente (
 CREATE TABLE produto (
 	codigo SERIAL PRIMARY KEY,
 	nome VARCHAR,
-	valor INTEGER
+	valor INT
 );
 
 CREATE TABLE nota (
 	codigo SERIAL PRIMARY KEY,
-	cliente INTEGER NOT NULL REFERENCES cliente(codigo),
-	total INTEGER
+	cliente INT NOT NULL REFERENCES cliente(codigo),
+	total INT
 );
 
 CREATE TABLE produto_comprado (
-	nota INTEGER NOT NULL REFERENCES nota(codigo),
-	produto INTEGER NOT NULL REFERENCES produto(codigo),
-	quantidade INTEGER,
-	total INTEGER,
+	nota INT NOT NULL REFERENCES nota(codigo),
+	produto INT NOT NULL REFERENCES produto(codigo),
+	quantidade INT,
+	total INT,
 	data TIMESTAMP
 );
