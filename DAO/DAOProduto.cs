@@ -5,15 +5,18 @@ using Npgsql;
 
 using Projeto3.Model;
 
-namespace Projeto3.DAO {
-	public class DAOProduto {
+namespace Projeto3.DAO
+{
+	public class DAOProduto
+	{
 		private NpgsqlCommand comandoCadastrar;
 		private NpgsqlCommand comandoBuscar;
 		private NpgsqlCommand comandoListar;
 		private NpgsqlCommand comandoAtualizar;
 		private NpgsqlCommand comandoRemover;
 
-		public DAOProduto(Conexao con) {
+		public DAOProduto(Conexao con)
+		{
 			comandoCadastrar = con.criarComando("INSERT INTO produto (nome, valor) VALUES (@nome, @valor);");
 			comandoCadastrar.Parameters.Add("@nome",  NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Parameters.Add("@valor", NpgsqlTypes.NpgsqlDbType.Integer);
@@ -37,7 +40,8 @@ namespace Projeto3.DAO {
 			comandoRemover.Prepare();
 		}
 
-		public List<Produto> listarProdutos() {
+		public List<Produto> listarProdutos()
+		{
 			var lista = new List<Produto>();
 
 			var reader = comandoListar.ExecuteReader();
@@ -52,23 +56,27 @@ namespace Projeto3.DAO {
 			return lista;
 		}
 
-		public void cadastrar(Produto produto) {
+		public void cadastrar(Produto produto)
+		{
 			defineParamentros(comandoCadastrar.Parameters, produto);
 			comandoCadastrar.ExecuteNonQuery();
 		}
 
-		public void remover(Produto produto) {
+		public void remover(Produto produto)
+		{
 			comandoRemover.Parameters["@codigo"].NpgsqlValue = produto.Codigo;
 			comandoRemover.ExecuteNonQuery();
 		}
 
-		public void atualizar(Produto produto) {
+		public void atualizar(Produto produto)
+		{
 			comandoAtualizar.Parameters["@codigo"].NpgsqlValue = produto.Codigo;
 			defineParamentros(comandoAtualizar.Parameters, produto);
 			comandoAtualizar.ExecuteNonQuery();
 		}
 
-		public Produto buscar(Int32 codigo) {
+		public Produto buscar(Int32 codigo)
+		{
 			comandoBuscar.Parameters["@codigo"].NpgsqlValue = codigo;
 			var reader = comandoBuscar.ExecuteReader();
 			reader.Read();
@@ -80,13 +88,15 @@ namespace Projeto3.DAO {
 			return produto;
 		}
 
-		private void lerLinha(NpgsqlDataReader reader, Produto produto) {
+		private void lerLinha(NpgsqlDataReader reader, Produto produto)
+		{
 			produto.Codigo = (Int32)  reader["codigo"];
 			produto.Nome   = (String) reader["nome"];
 			produto.Valor  = (Int32)  reader["valor"];
 		}
 
-		private void defineParamentros(NpgsqlParameterCollection paramentros, Produto produto) {
+		private void defineParamentros(NpgsqlParameterCollection paramentros, Produto produto)
+		{
 			paramentros["@nome"].NpgsqlValue  = produto.Nome;
 			paramentros["@valor"].NpgsqlValue = produto.Valor;
 		}

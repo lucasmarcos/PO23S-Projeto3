@@ -2,11 +2,14 @@ using System;
 
 using Npgsql;
 
-namespace Projeto3.DAO {
-	public class Conexao {
+namespace Projeto3.DAO
+{
+	public class Conexao
+	{
 		private NpgsqlConnection con;
 
-		public Conexao() {
+		public Conexao()
+		{
 			var host = "localhost";
 			var user = "postgres";
 			var pass = "aluno";
@@ -20,7 +23,8 @@ namespace Projeto3.DAO {
 			con.Open();
 		}
 
-		public NpgsqlCommand criarComando(String sql) {
+		public NpgsqlCommand criarComando(String sql)
+		{
 			var cmd = new NpgsqlCommand(sql, con);
 			return cmd;
 		}

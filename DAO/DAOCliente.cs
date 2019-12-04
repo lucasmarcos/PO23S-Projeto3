@@ -5,15 +5,18 @@ using Npgsql;
 
 using Projeto3.Model;
 
-namespace Projeto3.DAO {
-	public class DAOCliente {
+namespace Projeto3.DAO
+{
+	public class DAOCliente
+	{
 		private NpgsqlCommand comandoCadastrar;
 		private NpgsqlCommand comandoBuscar;
 		private NpgsqlCommand comandoListar;
 		private NpgsqlCommand comandoAtualizar;
 		private NpgsqlCommand comandoRemover;
 
-		public DAOCliente(Conexao con) {
+		public DAOCliente(Conexao con)
+		{
 			comandoCadastrar = con.criarComando("INSERT INTO cliente (nome, cpf, endereco, bairro, cep, cidade, telefone, uf) VALUES (@nome, @cpf, @endereco, @bairro, @cep, @cidade, @telefone, @uf);");
 			comandoCadastrar.Parameters.Add("@nome",     NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Parameters.Add("@cpf",      NpgsqlTypes.NpgsqlDbType.Varchar);
@@ -49,7 +52,8 @@ namespace Projeto3.DAO {
 			comandoRemover.Prepare();
 		}
 
-		public List<Cliente> listarClientes() {
+		public List<Cliente> listarClientes()
+		{
 			var lista = new List<Cliente>();
 
 			var reader = comandoListar.ExecuteReader();
@@ -63,17 +67,20 @@ namespace Projeto3.DAO {
 			return lista;
 		}
 
-		public void cadastrar(Cliente cliente) {
+		public void cadastrar(Cliente cliente)
+		{
 			defineParametros(comandoCadastrar.Parameters, cliente);
 			comandoCadastrar.ExecuteNonQuery();
 		}
 
-		public void remover(Cliente cliente) {
+		public void remover(Cliente cliente)
+		{
 			comandoRemover.Parameters["@codigo"].NpgsqlValue = cliente.Codigo;
 			comandoRemover.ExecuteNonQuery();
 		}
 
-		public Cliente buscar(Int32 codigo) {
+		public Cliente buscar(Int32 codigo)
+		{
 			comandoBuscar.Parameters["@codigo"].NpgsqlValue = codigo;
 			var reader = comandoBuscar.ExecuteReader();
 			reader.Read();
@@ -85,13 +92,15 @@ namespace Projeto3.DAO {
 			return cliente;
 		}
 
-		public void atualizar(Cliente cliente) {
+		public void atualizar(Cliente cliente)
+		{
 			comandoAtualizar.Parameters["@codigo"].NpgsqlValue = cliente.Codigo;
 			defineParametros(comandoAtualizar.Parameters, cliente);
 			comandoAtualizar.ExecuteNonQuery();
 		}
 
-		private void lerLinha(NpgsqlDataReader reader, Cliente cliente) {
+		private void lerLinha(NpgsqlDataReader reader, Cliente cliente)
+		{
 			cliente.Codigo   = (Int32)  reader["codigo"];
 			cliente.Nome     = (String) reader["nome"];
 			cliente.CPF      = (String) reader["cpf"];
@@ -103,7 +112,8 @@ namespace Projeto3.DAO {
 			cliente.UF       = (String) reader["uf"];
 		}
 
-		private void defineParametros(NpgsqlParameterCollection paramentros, Cliente cliente) {
+		private void defineParametros(NpgsqlParameterCollection paramentros, Cliente cliente)
+		{
 			paramentros["@nome"].NpgsqlValue = cliente.Nome;
 			paramentros["@cpf"].NpgsqlValue = cliente.CPF;
 			paramentros["@endereco"].NpgsqlValue = cliente.Endereco;

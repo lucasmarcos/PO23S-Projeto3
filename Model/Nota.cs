@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace Projeto3.Model {
-	public class Nota {
+namespace Projeto3.Model
+{
+	public class Nota
+	{
 		public Int32 Codigo { get; set; }
 		public Cliente Cliente { get; set; }
-		public List<Produto> Produtos { get; set; }
+		public List<Tuple<Produto, Int32>> Produtos { get; set; }
 		public Int32 Total { get; set; }
 
 		public void calcularTotal()
@@ -13,7 +15,7 @@ namespace Projeto3.Model {
 			Total = 0;
 			foreach (var p in Produtos)
 			{
-				Total += p.Valor;
+				Total += p.Item1.Valor * p.Item2;
 			}
 		}
 
@@ -23,7 +25,8 @@ namespace Projeto3.Model {
 			Cliente.debug();
 			foreach (var p in Produtos)
 			{
-				p.debug();
+				Console.Write($"{p.Item2}x ");
+				p.Item1.debug();
 			}
 		}
 	}

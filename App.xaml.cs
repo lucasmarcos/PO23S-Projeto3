@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Collections.Generic;
 
 using Projeto3.DAO;
@@ -8,7 +10,8 @@ namespace Projeto3
 {
     public partial class App : Application
     {
-        public App() {
+        public App()
+        {
             var con = new Conexao();
             var daoCliente = new DAOCliente(con);
             var daoProduto = new DAOProduto(con);
@@ -35,13 +38,15 @@ namespace Projeto3
 
             var nota = new Nota();
             nota.Cliente = eu;
-            nota.Produtos = new List<Produto>();
-            nota.Produtos.Add(prod1);
-            nota.Produtos.Add(prod2);
-            nota.Produtos.Add(prod3);
+            nota.Produtos = new List<Tuple<Produto, Int32>>();
+            nota.Produtos.Add(Tuple.Create(prod1, 3));
+            nota.Produtos.Add(Tuple.Create(prod2, 2));
+            nota.Produtos.Add(Tuple.Create(prod3, 1));
             nota.calcularTotal();
 
             nota.debug();
+
+            var impressora = new PrintDialog();
         }
     }
 }
