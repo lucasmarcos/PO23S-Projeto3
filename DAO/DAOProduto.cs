@@ -14,6 +14,7 @@ namespace Projeto3.DAO
 		private NpgsqlCommand comandoListar;
 		private NpgsqlCommand comandoAtualizar;
 		private NpgsqlCommand comandoRemover;
+		private NpgsqlCommand resgatarCodigo;
 
 		public DAOProduto(Conexao con)
 		{
@@ -30,6 +31,9 @@ namespace Projeto3.DAO
 			comandoCadastrar.Parameters.Add("@nome",  NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Parameters.Add("@valor", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoCadastrar.Prepare();
+
+			resgatarCodigo = con.criarComando("SELECT codigo FROM produto ORDER BY codigo DESC LIMIT 1;");
+			resgatarCodigo.Prepare();
 		}
 		
 		private void preparaBuscar(Conexao con)
@@ -81,6 +85,8 @@ namespace Projeto3.DAO
 		{
 			defineParamentros(comandoCadastrar.Parameters, produto);
 			comandoCadastrar.ExecuteNonQuery();
+			
+			produto.Codigo = (Int32) resgatarCodigo.ExecuteScalar();
 		}
 
 		public void remover(Produto produto)

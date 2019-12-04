@@ -10,6 +10,11 @@ namespace Projeto3.Model
 		public List<Tuple<Produto, Int32>> Produtos { get; set; }
 		public Int32 Total { get; set; }
 
+		public Nota()
+		{
+			Produtos = new List<Tuple<Produto, int>>();
+		}
+
 		public void calcularTotal()
 		{
 			Total = 0;
