@@ -111,9 +111,11 @@ namespace Projeto3.DAO
 
 			while(reader.Read())
 			{
-				
+				var quantitade = (Int32) reader["quantitade"];
+				var produto = daoProduto.buscar((Int32) reader["codigo"]);
+				nota.Produtos.Add(Tuple.Create(produto, quantidade));
 			}
-			
+			reader.Close();
 			
 			return nota;
 		}
