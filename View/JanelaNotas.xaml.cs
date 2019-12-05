@@ -3,9 +3,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Projeto3
 {
-	public class JanelaPrincipal : Window
+	public class JanelaNotas : Window
 	{
-		public JanelaPrincipal()
+		public JanelaNotas()
 		{
 			InitializeComponent();
 		}

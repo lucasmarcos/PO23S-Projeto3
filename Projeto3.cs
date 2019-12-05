@@ -16,7 +16,7 @@ namespace Projeto3
 			var builder = AppBuilder.Configure<App>().UsePlatformDetect();
 			builder.Start(Inicio, args);
 		}
-		
+
 		private static void Inicio(Application app, string[] args)
 		{
 			Console.WriteLine("conectando ao banco");
@@ -36,7 +36,15 @@ namespace Projeto3
 			empresa.Telefone = "+1 (49) 0000-9999";
 
 			Console.WriteLine("exibindo tela principal");
-			app.Run(new JanelaPrincipal());
+			var janelaPrincipal = new JanelaPrincipal();
+			janelaPrincipal.CanResize = false;
+
+			var janelaNotas = new JanelaNotas();
+			var janelaCliente = new JanelaCliente();
+			var janelaProduto = new JanelaProduto();
+			var janelaImprimir = new JanelaImprimir();
+
+			app.Run(janelaPrincipal);
 		}
 	}
 }
