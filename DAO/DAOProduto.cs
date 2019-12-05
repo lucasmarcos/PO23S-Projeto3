@@ -27,9 +27,10 @@ namespace Projeto3.DAO
 
 		private void preparaCadastrar(Conexao con)
 		{
-			comandoCadastrar = con.criarComando("INSERT INTO produto (nome, valor) VALUES (@nome, @valor);");
-			comandoCadastrar.Parameters.Add("@nome",  NpgsqlTypes.NpgsqlDbType.Varchar);
-			comandoCadastrar.Parameters.Add("@valor", NpgsqlTypes.NpgsqlDbType.Integer);
+			comandoCadastrar = con.criarComando("INSERT INTO produto (nome, valor, unidade) VALUES (@nome, @valor, @unidade);");
+			comandoCadastrar.Parameters.Add("@nome",    NpgsqlTypes.NpgsqlDbType.Varchar);
+			comandoCadastrar.Parameters.Add("@valor",   NpgsqlTypes.NpgsqlDbType.Integer);
+			comandoCadastrar.Parameters.Add("@unidade", NpgsqlTypes.NpgsqlDbType.Varchar);
 			comandoCadastrar.Prepare();
 
 			resgatarCodigo = con.criarComando("SELECT codigo FROM produto ORDER BY codigo DESC LIMIT 1;");
@@ -38,23 +39,24 @@ namespace Projeto3.DAO
 		
 		private void preparaBuscar(Conexao con)
 		{
-			comandoBuscar = con.criarComando("SELECT codigo, nome, valor FROM produto WHERE codigo = @codigo;");
+			comandoBuscar = con.criarComando("SELECT codigo, nome, valor, unidade FROM produto WHERE codigo = @codigo;");
 			comandoBuscar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoBuscar.Prepare();
 		}
 
 		private void preparaListar(Conexao con)
 		{
-			comandoListar = con.criarComando("SELECT codigo, nome, valor FROM produto;");
+			comandoListar = con.criarComando("SELECT codigo, nome, valor, unidade FROM produto;");
 			comandoListar.Prepare();			
 		}
 
 		private void preparaAtualizar(Conexao con)
 		{
-			comandoAtualizar = con.criarComando("UPDATE produto SET nome = @nome, valor = @valor WHERE codigo = @codigo;");
-			comandoAtualizar.Parameters.Add("@nome",   NpgsqlTypes.NpgsqlDbType.Varchar);
-			comandoAtualizar.Parameters.Add("@valor",  NpgsqlTypes.NpgsqlDbType.Integer);
-			comandoAtualizar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
+			comandoAtualizar = con.criarComando("UPDATE produto SET nome = @nome, valor = @valor, unidade = @unidade WHERE codigo = @codigo;");
+			comandoAtualizar.Parameters.Add("@nome",    NpgsqlTypes.NpgsqlDbType.Varchar);
+			comandoAtualizar.Parameters.Add("@valor",   NpgsqlTypes.NpgsqlDbType.Integer);
+			comandoAtualizar.Parameters.Add("@unidade", NpgsqlTypes.NpgsqlDbType.Varchar);
+			comandoAtualizar.Parameters.Add("@codigo",  NpgsqlTypes.NpgsqlDbType.Integer);
 			comandoAtualizar.Prepare();
 		}
 
@@ -117,15 +119,17 @@ namespace Projeto3.DAO
 
 		private void lerLinha(NpgsqlDataReader reader, Produto produto)
 		{
-			produto.Codigo = (Int32)  reader["codigo"];
-			produto.Nome   = (String) reader["nome"];
-			produto.Valor  = (Int32)  reader["valor"];
+			produto.Codigo  = (Int32)  reader["codigo"];
+			produto.Nome    = (String) reader["nome"];
+			produto.Valor   = (Int32)  reader["valor"];
+			produto.Unidade = (String) reader["unidade"];
 		}
 
 		private void defineParamentros(NpgsqlParameterCollection paramentros, Produto produto)
 		{
-			paramentros["@nome"].NpgsqlValue  = produto.Nome;
-			paramentros["@valor"].NpgsqlValue = produto.Valor;
+			paramentros["@nome"].NpgsqlValue    = produto.Nome;
+			paramentros["@valor"].NpgsqlValue   = produto.Valor;
+			paramentros["@unidade"].NpgsqlValue = produto.Unidade;
 		}
 	}
 }

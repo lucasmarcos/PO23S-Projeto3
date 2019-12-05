@@ -20,6 +20,13 @@ namespace Projeto3
 
             var empresa = new Empresa();
             empresa.Nome = "Valve";
+            empresa.Rua = "Rua Goiás, 92";
+            empresa.UF = "PR";
+            empresa.Bairro = "Centro";
+            empresa.CEP = "85660-000";
+            empresa.Cidade = "Dois Vizinhos";
+            empresa.CNPJ = "12345678910";
+            empresa.Telefone = "+1 (49) 0000-9999";
             empresa.debug();
 
             var eu = new Cliente();
@@ -36,21 +43,29 @@ namespace Projeto3
             var prod1 = new Produto();
             prod1.Nome = "DualShock 4";
             prod1.Valor = 100;
+            prod1.Unidade = "l";
+            daoProduto.cadastrar(prod1);
 
             var prod2 = new Produto();
             prod2.Nome = "AirPods Pro";
             prod2.Valor = 200;
+            prod2.Unidade = "kg";
+            daoProduto.cadastrar(prod2);
 
             var prod3 = new Produto();
             prod3.Nome = "Valve Index";
             prod3.Valor = 300;
+            prod3.Unidade = "cx.";
+            daoProduto.cadastrar(prod3);
 
             var nota = new Nota();
             nota.Cliente = eu;
+            nota.Data = DateTime.Now;
             nota.Produtos.Add(Tuple.Create(prod1, 3));
             nota.Produtos.Add(Tuple.Create(prod2, 2));
             nota.Produtos.Add(Tuple.Create(prod3, 1));
             nota.calcularTotal();
+            daoNota.cadastrar(nota);
 
             nota.debug();
             
@@ -63,8 +78,6 @@ namespace Projeto3
 
             var xps = new XpsDocument("tmp.xps", FileAccess.ReadWrite);
             var escritor = XpsDocument.CreateXpsDocumentWriter(xps);
-            escritor.Write(documento);
-
             xps.Close();
         }
     }

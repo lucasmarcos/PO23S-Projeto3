@@ -9,6 +9,7 @@ namespace Projeto3.Model
 		public Cliente Cliente { get; set; }
 		public List<Tuple<Produto, Int32>> Produtos { get; set; }
 		public Int32 Total { get; set; }
+		public DateTime Data { get; set; }
 
 		public Nota()
 		{
@@ -26,7 +27,7 @@ namespace Projeto3.Model
 
 		public void debug()
 		{
-			Console.WriteLine($"nota:{Codigo}|{Total}");
+			Console.WriteLine($"nota:{Codigo}|{Data}|{Total}");
 			Cliente.debug();
 			foreach (var p in Produtos)
 			{
