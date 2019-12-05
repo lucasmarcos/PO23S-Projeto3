@@ -1,11 +1,13 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="360"
         x:Class="Projeto3.JanelaPrincipal"
-        Title="Bem-vindo | Projeto 3">
+        Title="Bem-vindo | Projeto 3" FontFamily="Source Sans Pro">
 
-Oi Viadinho!
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom">ola viadinho</Button>
+        <StackPanel>
+            <Button>imprimir!</Button>
+        </StackPanel>
+    </DockPanel>
 
 </Window>

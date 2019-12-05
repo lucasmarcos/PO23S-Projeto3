@@ -1,3 +1,5 @@
+using System;
+
 using Avalonia;
 
 using Projeto3.DAO;
@@ -9,12 +11,15 @@ namespace Projeto3
 	{
 		public static void Main(string[] args)
 		{
+			Console.WriteLine("inicio");
+			Console.WriteLine("configurando avalonia");
 			var builder = AppBuilder.Configure<App>().UsePlatformDetect();
 			builder.Start(Inicio, args);
 		}
 		
 		private static void Inicio(Application app, string[] args)
 		{
+			Console.WriteLine("conectando ao banco");
 			var con = new Conexao();
 			var daoCliente = new DAOCliente(con);
 			var daoProduto = new DAOProduto(con);
@@ -30,6 +35,7 @@ namespace Projeto3
 			empresa.CNPJ = "12345678910";
 			empresa.Telefone = "+1 (49) 0000-9999";
 
+			Console.WriteLine("exibindo tela principal");
 			app.Run(new JanelaPrincipal());
 		}
 	}
