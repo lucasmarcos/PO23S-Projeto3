@@ -2,7 +2,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="Projeto3.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16">
 
-<StackPanel Margin="8">
+<Grid Margin="8">
 	<TextBlock>Nota Fiscal</TextBlock>
 
 	<TextBlock>Nome da Empresa</TextBlock>
@@ -29,6 +29,6 @@
 
 	<TextBlock>Código da Nota</TextBlock>
 	<TextBlock>Total da Nota</TextBlock>
-</StackPanel>
+</Grid>
 
 </Window>

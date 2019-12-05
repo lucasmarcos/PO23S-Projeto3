@@ -35,17 +35,17 @@ CREATE TABLE produto_comprado (
 );
 
 INSERT INTO cliente (codigo, nome, cpf,	endereco, bairro, cep, cidade, telefone, uf) VALUES
-	(1, 'Angela Abar', '12345678910', 'Padaria', 'Centro', '9', 'Tulsa', '12', 'OK');
+	(100, 'Angela Abar', '12345678910', 'Padaria', 'Centro', '9', 'Tulsa', '12', 'OK');
 
 INSERT INTO produto (codigo, nome, valor, unidade) VALUES
-	(1, 'DualShock 5', 20000, 'cx.'),
-	(2, 'Agua', 10, 'ml'),
-	(3, 'Redmi K32', 200000, 'un.');
+	(100, 'DualShock 5', 20000, 'cx.'),
+	(101, 'Agua', 10, 'ml'),
+	(102, 'Redmi K32', 200000, 'un.');
 
 INSERT INTO nota (codigo, cliente, data) VALUES
-	(1, 1, current_timestamp);
+	(100, 100, current_timestamp);
 
 INSERT INTO produto_comprado (nota, produto, quantidade) VALUES
-	(1, 1, 2),
-	(1, 2, 5000),
-	(1, 3, 5);
+	(100, 100, 2),
+	(100, 101, 5000),
+	(100, 102, 5);
