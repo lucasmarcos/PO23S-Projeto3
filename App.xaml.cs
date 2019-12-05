@@ -1,11 +1,6 @@
-using System;
-using System.IO;
-using System.Windows;
-using System.Windows.Xps.Packaging;
-using System.Windows.Documents;
-
 using Projeto3.DAO;
 using Projeto3.Model;
+using System.Windows;
 
 namespace Projeto3
 {
@@ -27,13 +22,6 @@ namespace Projeto3
 			empresa.Cidade = "Dois Vizinhos";
 			empresa.CNPJ = "12345678910";
 			empresa.Telefone = "+1 (49) 0000-9999";
-			empresa.debug();
-
-			var notas = daoNota.listarNotas();
-			foreach (var n in notas)
-			{
-				n.debug();
-			}
 		}
 	}
 }

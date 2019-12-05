@@ -4,7 +4,7 @@ namespace Projeto3.Model
 {
 	public class Cliente
 	{
-		public Int32  Codigo { get; set; }
+		public Int32 Codigo { get; set; }
 		public String Nome { get; set; }
 		public String CPF { get; set; }
 		public String Endereco { get; set; }

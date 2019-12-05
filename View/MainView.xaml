@@ -3,9 +3,9 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	Title="Projeto 3">
 	<StackPanel>
-		<Button x:Name="button1" Content="Cliente"/>
-		<Button x:Name="button2" Content="Produto"/>
-		<Button x:Name="button3" Content="Notas"/>
-		<Button x:Name="button4" Content="Nova Nota"/>
+		<Button x:Name="button1" Content="Cliente" Click="botaoClienteClick"/>
+        <Button x:Name="button2" Content="Produto" Click="botaoProdutoClick"/>
+        <Button x:Name="button3" Content="Notas" Click="botaoNotasClick"/>
+        <Button x:Name="button4" Content="Nova Nota" Click="botaoNovaNotaClick"/>
 	</StackPanel>
 </Window>

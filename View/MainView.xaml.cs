@@ -8,5 +8,25 @@ namespace Projeto3
 		{
 			InitializeComponent();
 		}
+
+		private void botaoClienteClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void botaoProdutoClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void botaoNotasClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void botaoNovaNotaClick(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
