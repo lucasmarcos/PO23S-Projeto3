@@ -18,19 +18,18 @@ CREATE TABLE cliente (
 CREATE TABLE produto (
 	codigo SERIAL PRIMARY KEY,
 	nome VARCHAR,
-	valor INT
+	valor INT,
+	unidade VARCHAR
 );
 
 CREATE TABLE nota (
 	codigo SERIAL PRIMARY KEY,
 	cliente INT NOT NULL REFERENCES cliente(codigo),
-	total INT
+	data TIMESTAMP
 );
 
 CREATE TABLE produto_comprado (
 	nota INT NOT NULL REFERENCES nota(codigo),
 	produto INT NOT NULL REFERENCES produto(codigo),
-	quantidade INT,
-	total INT,
-	data TIMESTAMP
+	quantidade INT
 );

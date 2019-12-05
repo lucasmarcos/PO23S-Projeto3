@@ -1,7 +1,9 @@
 using System;
 
-namespace Projeto3.Model {
-	public class Empresa {
+namespace Projeto3.Model
+{
+	public class Empresa
+	{
 		public String Nome { get; set; }
 		public String CNPJ { get; set; }
 		public String Rua { get; set; }
@@ -11,7 +13,8 @@ namespace Projeto3.Model {
 		public String UF { get; set; }
 		public String Telefone { get; set; }
 		
-		public void debug() {
+		public void debug()
+		{
 			Console.WriteLine($"empresa:{Nome}|{CNPJ}|{Rua}|{Bairro}|{CEP}|{Cidade}|{Telefone}|{UF}");
 		}
 	}
