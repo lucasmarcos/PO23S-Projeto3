@@ -1,5 +1,6 @@
-using Npgsql;
 using System;
+
+using Npgsql;
 
 namespace Projeto3.DAO
 {

@@ -1,7 +1,9 @@
-using Npgsql;
-using Projeto3.Model;
 using System;
 using System.Collections.Generic;
+
+using Npgsql;
+
+using Projeto3.Model;
 
 namespace Projeto3.DAO
 {

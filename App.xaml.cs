@@ -1,6 +1,7 @@
+using System.Windows;
+
 using Projeto3.DAO;
 using Projeto3.Model;
-using System.Windows;
 
 namespace Projeto3
 {
