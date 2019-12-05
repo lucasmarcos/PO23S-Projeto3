@@ -33,3 +33,19 @@ CREATE TABLE produto_comprado (
 	produto INT NOT NULL REFERENCES produto(codigo) ON DELETE CASCADE,
 	quantidade INT
 );
+
+INSERT INTO cliente (codigo, nome, cpf,	endereco, bairro, cep, cidade, telefone, uf) VALUES
+	(1, 'Angela Abar', '12345678910', 'Padaria', 'Centro', '9', 'Tulsa', '12', 'OK');
+
+INSERT INTO produto (codigo, nome, valor, unidade) VALUES
+	(1, 'DualShock 5', 20000, 'cx.'),
+	(2, 'Agua', 10, 'ml'),
+	(3, 'Redmi K32', 200000, 'un.');
+
+INSERT INTO nota (codigo, cliente, data) VALUES
+	(1, 1, current_timestamp);
+
+INSERT INTO produto_comprado (nota, produto, quantidade) VALUES
+	(1, 1, 2),
+	(1, 2, 5000),
+	(1, 3, 5);

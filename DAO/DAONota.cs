@@ -95,6 +95,8 @@ namespace Projeto3.DAO
 					lerLinhaProduto(reader, n);
 				}
 				reader.Close();
+
+				n.calcularTotal();
 			}
 
 			return notas;
@@ -139,6 +141,7 @@ namespace Projeto3.DAO
 			}
 			reader.Close();
 
+			nota.calcularTotal();
 			return nota;
 		}
 
