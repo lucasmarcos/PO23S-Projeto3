@@ -12,7 +12,7 @@ namespace Projeto3.Model
 		public String Cidade { get; set; }
 		public String UF { get; set; }
 		public String Telefone { get; set; }
-		
+
 		public void debug()
 		{
 			Console.WriteLine($"empresa:{Nome}|{CNPJ}|{Rua}|{Bairro}|{CEP}|{Cidade}|{Telefone}|{UF}");

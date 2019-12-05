@@ -83,7 +83,7 @@ namespace Projeto3.DAO
 			var lista = new List<Cliente>();
 
 			var reader = comandoListar.ExecuteReader();
-			while(reader.Read()) 
+			while(reader.Read())
 			{
 				var cliente = new Cliente();
 				lerLinha(reader, cliente);

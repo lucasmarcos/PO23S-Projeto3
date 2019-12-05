@@ -116,7 +116,7 @@ namespace Projeto3.DAO
 				nota.Produtos.Add(Tuple.Create(produto, quantidade));
 			}
 			reader.Close();
-			
+
 			return nota;
 		}
 
@@ -124,7 +124,7 @@ namespace Projeto3.DAO
 		{
 
 		}
-		
+
 		private void lerLinhaNota(NpgsqlDataReader reader, Nota nota)
 		{
 			nota.Codigo  = (Int32) reader["codigo"];
@@ -139,7 +139,7 @@ namespace Projeto3.DAO
 			parametros["@cliente"].NpgsqlValue = nota.Cliente.Codigo;
 			parametros["@data"].NpgsqlValue = nota.Data;
 		}
-		
+
 		private void defineParametrosProduto(NpgsqlParameterCollection parametros, Int32 nota, Int32 produto, Int32 quantidade)
 		{
 			parametros["@nota"].NpgsqlValue       = nota;

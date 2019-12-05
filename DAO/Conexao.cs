@@ -16,8 +16,8 @@ namespace Projeto3.DAO
 			var db = "projeto3";
 
 			var uri = String.Format(
-				"Host={0};Username={1};Password={2};Database={3}",
-				host, user, pass, db);
+					"Host={0};Username={1};Password={2};Database={3}",
+					host, user, pass, db);
 
 			con = new NpgsqlConnection(uri);
 			con.Open();

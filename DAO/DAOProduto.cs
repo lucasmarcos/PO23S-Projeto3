@@ -36,7 +36,7 @@ namespace Projeto3.DAO
 			resgatarCodigo = con.criarComando("SELECT codigo FROM produto ORDER BY codigo DESC LIMIT 1;");
 			resgatarCodigo.Prepare();
 		}
-		
+
 		private void preparaBuscar(Conexao con)
 		{
 			comandoBuscar = con.criarComando("SELECT codigo, nome, valor, unidade FROM produto WHERE codigo = @codigo;");
@@ -47,7 +47,7 @@ namespace Projeto3.DAO
 		private void preparaListar(Conexao con)
 		{
 			comandoListar = con.criarComando("SELECT codigo, nome, valor, unidade FROM produto;");
-			comandoListar.Prepare();			
+			comandoListar.Prepare();
 		}
 
 		private void preparaAtualizar(Conexao con)
@@ -87,7 +87,7 @@ namespace Projeto3.DAO
 		{
 			defineParamentros(comandoCadastrar.Parameters, produto);
 			comandoCadastrar.ExecuteNonQuery();
-			
+
 			produto.Codigo = (Int32) resgatarCodigo.ExecuteScalar();
 		}
 
