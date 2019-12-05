@@ -1,11 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<UseWPF>true</UseWPF>
-		<RootNamespace>Projeto3</RootNamespace>
 	</PropertyGroup>
+
 	<ItemGroup>
-		<PackageReference Include="npgsql" Version="4.1.2" />
+		<PackageReference Include="npgsql" Version="4.1.2"/>
+		<PackageReference Include="Avalonia" Version="0.8.3"/>
+    	<PackageReference Include="Avalonia.Desktop" Version="0.8.3"/>
 	</ItemGroup>
+
+	<ItemGroup>
+    	<Compile Update="**\*.xaml.cs">
+      		<DependentUpon>%(Filename)</DependentUpon>
+    	</Compile>
+    
+		<AvaloniaResource Include="**\*.xaml">
+      		<SubType>Designer</SubType>
+    	</AvaloniaResource>
+  	</ItemGroup>
 </Project>
