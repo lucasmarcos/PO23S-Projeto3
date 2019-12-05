@@ -9,6 +9,9 @@ namespace Projeto3
 {
 	public class Projeto3
 	{
+		private static JanelaImprimir janelaImprimir;
+		private static JanelaCliente janelaCliente;
+
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("inicio");
@@ -37,14 +40,24 @@ namespace Projeto3
 
 			Console.WriteLine("exibindo tela principal");
 			var janelaPrincipal = new JanelaPrincipal();
-			janelaPrincipal.CanResize = false;
 
 			var janelaNotas = new JanelaNotas();
-			var janelaCliente = new JanelaCliente();
 			var janelaProduto = new JanelaProduto();
-			var janelaImprimir = new JanelaImprimir();
+
+			Projeto3.janelaCliente = new JanelaCliente();
+			Projeto3.janelaImprimir = new JanelaImprimir();
 
 			app.Run(janelaPrincipal);
+		}
+
+		public static void mostarCliente()
+		{
+			Projeto3.janelaCliente.Show();
+		}
+
+		public static void mostarNotaFiscal()
+		{
+			Projeto3.janelaImprimir.Show();
 		}
 	}
 }

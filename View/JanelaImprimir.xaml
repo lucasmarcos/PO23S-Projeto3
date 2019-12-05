@@ -1,3 +1,34 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="Projeto3.JanelaImprimir"/>
+	x:Class="Projeto3.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16">
+
+<StackPanel Margin="8">
+	<TextBlock>Nota Fiscal</TextBlock>
+
+	<TextBlock>Nome da Empresa</TextBlock>
+	<TextBlock>Rua da Empresa</TextBlock>
+	<TextBlock>Bairro da Empresa</TextBlock>
+	<TextBlock>CEP da Empresa</TextBlock>
+	<TextBlock>Fone da Empresa</TextBlock>
+
+	<TextBlock>Nome do Cliente</TextBlock>
+	<TextBlock>CPF do Cliente</TextBlock>
+	<TextBlock>Endereco do Cliente</TextBlock>
+	<TextBlock>Bairro do Cliente</TextBlock>
+	<TextBlock>CEP do Cliente</TextBlock>
+	<TextBlock>Cidade do Cliente</TextBlock>
+	<TextBlock>Telefone do Cliente</TextBlock>
+	<TextBlock>UF do Cliente</TextBlock>
+
+	<TextBlock>Código do Produto</TextBlock>
+	<TextBlock>Nome do Produto</TextBlock>
+	<TextBlock>Unidade do Produto</TextBlock>
+	<TextBlock>Quantidade do Produto</TextBlock>
+	<TextBlock>Valor do Produto</TextBlock>
+	<TextBlock>Total do Produto</TextBlock>
+
+	<TextBlock>Código da Nota</TextBlock>
+	<TextBlock>Total da Nota</TextBlock>
+</StackPanel>
+
+</Window>
