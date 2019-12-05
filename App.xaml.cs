@@ -16,7 +16,7 @@ namespace Projeto3
 			var con = new Conexao();
 			var daoCliente = new DAOCliente(con);
 			var daoProduto = new DAOProduto(con);
-			var daoNota = new DAONota(con, daoCliente, daoProduto);
+			var daoNota = new DAONota(con);
 
 			var empresa = new Empresa();
 			empresa.Nome = "Valve";
@@ -29,19 +29,11 @@ namespace Projeto3
 			empresa.Telefone = "+1 (49) 0000-9999";
 			empresa.debug();
 
-			var nota = daoNota.buscar(4);
-			nota.debug();
-
-			var documento = new FixedDocument(); // vs. PrintVisual
-			var conteudo = new PageContent();
-			var pagina = new FixedPage();
-
-			conteudo.Child = pagina;
-			documento.Pages.Add(conteudo);
-
-			var xps = new XpsDocument("tmp.xps", FileAccess.ReadWrite);
-			var escritor = XpsDocument.CreateXpsDocumentWriter(xps);
-			xps.Close();
+			var notas = daoNota.listarNotas();
+			foreach (var n in notas)
+			{
+				n.debug();
+			}
 		}
 	}
 }

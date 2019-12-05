@@ -29,7 +29,7 @@ CREATE TABLE nota (
 );
 
 CREATE TABLE produto_comprado (
-	nota INT NOT NULL REFERENCES nota(codigo),
-	produto INT NOT NULL REFERENCES produto(codigo),
+	nota INT NOT NULL REFERENCES nota(codigo) ON DELETE CASCADE,
+	produto INT NOT NULL REFERENCES produto(codigo) ON DELETE CASCADE,
 	quantidade INT
 );
