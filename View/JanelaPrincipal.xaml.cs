@@ -22,7 +22,7 @@ namespace Projeto3
 
 		private void botaoProduto(object s, object e)
 		{
-			Projeto3.mostarNotaFiscal();
+			Projeto3.mostarProduto();
 		}
 
 		private void botaoNotas(object s, object e)
@@ -34,5 +34,5 @@ namespace Projeto3
 		{
 			Projeto3.mostarNotaFiscal();
 		}
-    } 
+	}
 }

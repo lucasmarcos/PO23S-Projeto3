@@ -49,6 +49,12 @@ namespace Projeto3
 			janelaCliente.Show();
 		}
 
+		public static void mostarProduto()
+		{
+			var janelaProduto = new JanelaProduto(daoProduto);
+			janelaProduto.Show();
+		}
+
 		public static void mostarNotaFiscal()
 		{
 			var janelaImprimir = new JanelaImprimir();
