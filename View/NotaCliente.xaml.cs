@@ -3,9 +3,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Projeto3.View
 {
-    public class NotaEmpresa : UserControl
+    public class NotaCliente : UserControl
     {
-        public NotaEmpresa()
+        public NotaCliente()
         {
             InitializeComponent();
         }

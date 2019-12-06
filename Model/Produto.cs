@@ -8,7 +8,7 @@ namespace Projeto3.Model
         public String Nome { get; set; }
         public Int32 Valor { get; set; }
         public String Unidade { get; set; }
-			
+
         public void Debug()
         {
             Console.WriteLine($"produto:{Codigo}|{Nome}|{Valor}|{Unidade}");

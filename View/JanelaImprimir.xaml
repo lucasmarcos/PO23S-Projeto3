@@ -2,36 +2,21 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:Projeto3.View;assembly=Projeto3"
 	x:Class="Projeto3.View.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
-  
+
 <StackPanel>
 	<TextBlock FontSize="24" FontWeight="Bold" Text="Nota Fiscal"/>
 
 	<local:NotaEmpresa DataContext="{Binding Empresa}"/>
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
+	<local:NotaCliente DataContext="{Binding Cliente}"/>
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
-
-		<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Cliente.Nome}"/>
-		<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Cliente.CPF}"/>
-		<TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Cliente.Telefone}"/>
-		<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Cliente.Endereco}"/>
-		<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Cliente.Bairro}"/>
-		<TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Cliente.Cidade}"/>
-		<TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Cliente.UF}"/>
-		<TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Cliente.CEP}"/>
-	</Grid>
+	<ItemsControl Items="{Binding Produtos}">
+		<ItemsControl.ItemTemplate>
+			<DataTemplate>
+				<local:NotaProdutoComprado DataContext="{Binding}"/>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+	</ItemsControl>
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -48,15 +33,6 @@
 		<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Data}"/>
 		<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Codigo}"/>
 	</Grid>
-
-	<ItemsControl Items="{Binding Produtos}">
-		<ItemsControl.ItemTemplate>
-			<DataTemplate>
-				<local:NotaProdutoComprado DataContext="{Binding}"/>
-			</DataTemplate>
-		</ItemsControl.ItemTemplate>
-	</ItemsControl>
-
 </StackPanel>
 
 </Window>
