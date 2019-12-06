@@ -1,4 +1,3 @@
-using System.Windows.Input;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
@@ -18,22 +17,22 @@ namespace Projeto3.View
 
 		public void BotaoCliente(object s, object e)
 		{
-			App.MostarCliente();
+			App.MostarCliente(this);
 		}
 
 		public void BotaoProduto(object s, object e)
 		{
-			App.MostarProduto();
+			App.MostarProduto(this);
 		}
 
 		public void BotaoNotas(object s, object e)
 		{
-			App.MostarNotaFiscal();
+			App.MostarNotaFiscal(this);
 		}
 
 		public void BotaoEmitir(object s, object e)
 		{
-			App.NovaNotaFiscal();
+			App.NovaNotaFiscal(this);
 		}
 	}
 }

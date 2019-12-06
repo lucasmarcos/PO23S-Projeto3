@@ -1,5 +1,5 @@
 using Avalonia;
-// using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
 using Projeto3.DAO;
@@ -32,19 +32,19 @@ namespace Projeto3
 		//		base.OnFrameworkInitializationCompleted();
 		//	}
 
-		public static void MostarCliente()
+		public static void MostarCliente(Window w)
 		{
 			var janelaCliente = new JanelaCliente {DAOCliente = _daoCliente};
-			janelaCliente.Show();
+			janelaCliente.ShowDialog(w);
 		}
 
-		public static void MostarProduto()
+		public static void MostarProduto(Window w)
 		{
 			var janelaProduto = new JanelaProduto {DAOProduto = _daoProduto};
-			janelaProduto.Show();
+			janelaProduto.ShowDialog(w);
 		}
 
-		public static void MostarNotaFiscal()
+		public static void MostarNotaFiscal(Window w)
 		{
 			var empresa = new Empresa
 			{
@@ -63,10 +63,10 @@ namespace Projeto3
 
 			var janelaImprimir = new JanelaImprimir();
 			janelaImprimir.SetNota(nota);
-			janelaImprimir.Show();
+			janelaImprimir.ShowDialog(w);
 		}
 
-		public static void NovaNotaFiscal()
+		public static void NovaNotaFiscal(Window w)
 		{
 			var empresa = new Empresa
 			{
@@ -82,7 +82,7 @@ namespace Projeto3
 
 			var janelaNovaNota = new JanelaNovaNota();
 			janelaNovaNota.SetEmpresa(empresa);
-			janelaNovaNota.Show();
+			janelaNovaNota.ShowDialog(w);
 		}
 	}
 }

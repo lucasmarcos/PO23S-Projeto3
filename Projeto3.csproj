@@ -16,9 +16,12 @@
 
 		<AvaloniaResource Include="View\JanelaCliente.xaml"/>
 		<AvaloniaResource Include="View\JanelaProduto.xaml"/>
-		<AvaloniaResource Include="View\JanelaNovaNota.xaml"/>
-		<AvaloniaResource Include="View\JanelaImprimir.xaml"/>
 
+		<AvaloniaResource Include="View\JanelaNovaNota.xaml"/>
+		<AvaloniaResource Include="View\JanelaListarClientes.xaml"/>
+		<AvaloniaResource Include="View\JanelaListarProdutos.xaml"/>
+
+		<AvaloniaResource Include="View\JanelaImprimir.xaml"/>
 		<AvaloniaResource Include="View\NotaProdutoComprado.xaml"/>
 		<AvaloniaResource Include="View\NotaEmpresa.xaml"/>
 		<AvaloniaResource Include="View\NotaCliente.xaml"/>

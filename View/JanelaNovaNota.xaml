@@ -8,10 +8,10 @@
 
 	<Button Content="Widget do Cliente Selecionado"/>
 	<Button Content="X Tchau Cliente Selectionado"/>
-	<Button Content="Selectionar Cliente"/>
+	<Button Content="Selectionar Cliente" Click="SelecionarCliente"/>
 
 	<Button Content="Widget da Tabela dos Produtos"/>
-	<Button Content="Adicionar Produto"/>
+	<Button Content="Adicionar Produto" Click="AdicionarProduto"/>
 
 	<Button Content="Emitir"/>
 </StackPanel>

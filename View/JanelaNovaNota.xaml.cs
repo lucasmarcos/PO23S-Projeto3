@@ -21,5 +21,17 @@ namespace Projeto3.View
 		{
 			AvaloniaXamlLoader.Load(this);
 		}
+
+		public void SelecionarCliente(object s, object e)
+		{
+			var janelaListarClientes = new JanelaListarClientes();
+			janelaListarClientes.ShowDialog(this);
+		}
+
+		public void AdicionarProduto(object s, object e)
+		{
+			var janelaListarProdutos = new JanelaListarProdutos();
+			janelaListarProdutos.ShowDialog(this);
+		}
 	}
 }
