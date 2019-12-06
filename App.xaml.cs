@@ -65,5 +65,24 @@ namespace Projeto3
 			janelaImprimir.SetNota(nota);
 			janelaImprimir.Show();
 		}
+
+		public static void NovaNotaFiscal()
+		{
+			var empresa = new Empresa
+			{
+				Nome     = "Valve",
+				Rua      = "Rua Goiás, 92",
+				UF       = "PR",
+				Bairro   = "Centro",
+				CEP      = "85660-000",
+				Cidade   = "Dois Vizinhos",
+				CNPJ     = "12345678910",
+				Telefone = "+1 (49) 0000-9999"
+			};
+
+			var janelaNovaNota = new JanelaNovaNota();
+			janelaNovaNota.SetEmpresa(empresa);
+			janelaNovaNota.Show();
+		}
 	}
 }

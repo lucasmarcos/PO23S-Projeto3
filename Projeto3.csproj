@@ -13,8 +13,10 @@
 		<AvaloniaResource Include="App.xaml"/>
 
 		<AvaloniaResource Include="View\JanelaPrincipal.xaml"/>
+
 		<AvaloniaResource Include="View\JanelaCliente.xaml"/>
 		<AvaloniaResource Include="View\JanelaProduto.xaml"/>
+		<AvaloniaResource Include="View\JanelaNovaNota.xaml"/>
 		<AvaloniaResource Include="View\JanelaImprimir.xaml"/>
 
 		<AvaloniaResource Include="View\NotaProdutoComprado.xaml"/>

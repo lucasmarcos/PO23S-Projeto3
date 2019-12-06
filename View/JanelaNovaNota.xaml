@@ -1,0 +1,5 @@
+<Window xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Projeto3.View.JanelaNovaNota" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
+    oi?
+</Window>

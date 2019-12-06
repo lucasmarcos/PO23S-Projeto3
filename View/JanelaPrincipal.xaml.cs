@@ -33,7 +33,7 @@ namespace Projeto3.View
 
 		public void BotaoEmitir(object s, object e)
 		{
-			App.MostarNotaFiscal();
+			App.NovaNotaFiscal();
 		}
 	}
 }
