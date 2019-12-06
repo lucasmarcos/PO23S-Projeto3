@@ -7,13 +7,14 @@ namespace Projeto3.Model
 	{
 		public Int32 Codigo { get; set; }
 		public Cliente Cliente { get; set; }
-		public List<Tuple<Produto, Int32>> Produtos { get; set; }
+		public List<ProdutoComprado> Produtos { get; set; }
 		public Int32 Total { get; set; }
 		public DateTime Data { get; set; }
+		public Empresa Empresa { get; set; }
 
 		public Nota()
 		{
-			Produtos = new List<Tuple<Produto, int>>();
+			Produtos = new List<ProdutoComprado>();
 		}
 
 		public void CalcularTotal()
@@ -21,7 +22,7 @@ namespace Projeto3.Model
 			Total = 0;
 			foreach (var p in Produtos)
 			{
-				Total += p.Item1.Valor * p.Item2;
+				Total += p.Total;
 			}
 		}
 
@@ -31,8 +32,8 @@ namespace Projeto3.Model
 			Cliente.Debug();
 			foreach (var p in Produtos)
 			{
-				Console.Write($"{p.Item2}x ");
-				p.Item1.Debug();
+				Console.Write($"{p.Total}|{p.Quantidade}x|");
+				p.Produto.Debug();
 			}
 		}
 	}

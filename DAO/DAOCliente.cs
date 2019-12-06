@@ -29,14 +29,14 @@ namespace Projeto3.DAO
         private void preparaCadastrar(Conexao con)
         {
             comandoCadastrar = con.CriarComando("INSERT INTO cliente (nome, cpf, endereco, bairro, cep, cidade, telefone, uf) VALUES (@nome, @cpf, @endereco, @bairro, @cep, @cidade, @telefone, @uf);");
-            comandoCadastrar.Parameters.Add("@nome", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoCadastrar.Parameters.Add("@cpf", NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoCadastrar.Parameters.Add("@nome",     NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoCadastrar.Parameters.Add("@cpf",      NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoCadastrar.Parameters.Add("@endereco", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoCadastrar.Parameters.Add("@bairro", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoCadastrar.Parameters.Add("@cep", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoCadastrar.Parameters.Add("@cidade", NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoCadastrar.Parameters.Add("@bairro",   NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoCadastrar.Parameters.Add("@cep",      NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoCadastrar.Parameters.Add("@cidade",   NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoCadastrar.Parameters.Add("@telefone", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoCadastrar.Parameters.Add("@uf", NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoCadastrar.Parameters.Add("@uf",       NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoCadastrar.Prepare();
 
             resgatarCodigo = con.CriarComando("SELECT codigo FROM cliente ORDER BY codigo DESC LIMIT 1;");
@@ -59,15 +59,15 @@ namespace Projeto3.DAO
         private void preparaAtualizar(Conexao con)
         {
             comandoAtualizar = con.CriarComando("UPDATE cliente SET nome = @nome, cpf = @cpf, endereco = @endereco, bairro = @bairro, cep = @cep, cidade = @cidade, telefone = @telefone, uf = @uf WHERE codigo = @codigo");
-            comandoAtualizar.Parameters.Add("@nome", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@cpf", NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoAtualizar.Parameters.Add("@nome",     NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoAtualizar.Parameters.Add("@cpf",      NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoAtualizar.Parameters.Add("@endereco", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@bairro", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@cep", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@cidade", NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoAtualizar.Parameters.Add("@bairro",   NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoAtualizar.Parameters.Add("@cep",      NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoAtualizar.Parameters.Add("@cidade",   NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoAtualizar.Parameters.Add("@telefone", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@uf", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
+            comandoAtualizar.Parameters.Add("@uf",       NpgsqlTypes.NpgsqlDbType.Varchar);
+            comandoAtualizar.Parameters.Add("@codigo",   NpgsqlTypes.NpgsqlDbType.Integer);
             comandoAtualizar.Prepare();
         }
 
@@ -130,27 +130,27 @@ namespace Projeto3.DAO
 
         private void lerLinha(NpgsqlDataReader reader, Cliente cliente)
         {
-            cliente.Codigo = (Int32)reader["codigo"];
-            cliente.Nome = (String)reader["nome"];
-            cliente.CPF = (String)reader["cpf"];
-            cliente.Endereco = (String)reader["endereco"];
-            cliente.Bairro = (String)reader["bairro"];
-            cliente.CEP = (String)reader["cep"];
-            cliente.Cidade = (String)reader["cidade"];
-            cliente.Telefone = (String)reader["telefone"];
-            cliente.UF = (String)reader["uf"];
+            cliente.Codigo   = (Int32)  reader["codigo"];
+            cliente.Nome     = (String) reader["nome"];
+            cliente.CPF      = (String) reader["cpf"];
+            cliente.Endereco = (String) reader["endereco"];
+            cliente.Bairro   = (String) reader["bairro"];
+            cliente.CEP      = (String) reader["cep"];
+            cliente.Cidade   = (String) reader["cidade"];
+            cliente.Telefone = (String) reader["telefone"];
+            cliente.UF       = (String) reader["uf"];
         }
 
         private void defineParametros(NpgsqlParameterCollection paramentros, Cliente cliente)
         {
-            paramentros["@nome"].NpgsqlValue = cliente.Nome;
-            paramentros["@cpf"].NpgsqlValue = cliente.CPF;
+            paramentros["@nome"].NpgsqlValue     = cliente.Nome;
+            paramentros["@cpf"].NpgsqlValue      = cliente.CPF;
             paramentros["@endereco"].NpgsqlValue = cliente.Endereco;
-            paramentros["@bairro"].NpgsqlValue = cliente.Bairro;
-            paramentros["@cep"].NpgsqlValue = cliente.CEP;
-            paramentros["@cidade"].NpgsqlValue = cliente.Cidade;
+            paramentros["@bairro"].NpgsqlValue   = cliente.Bairro;
+            paramentros["@cep"].NpgsqlValue      = cliente.CEP;
+            paramentros["@cidade"].NpgsqlValue   = cliente.Cidade;
             paramentros["@telefone"].NpgsqlValue = cliente.Telefone;
-            paramentros["@uf"].NpgsqlValue = cliente.UF;
+            paramentros["@uf"].NpgsqlValue       = cliente.UF;
         }
     }
 }

@@ -1,34 +1,80 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="Projeto3.View.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16">
+	x:Class="Projeto3.View.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
+  
+<StackPanel>
+	<TextBlock FontSize="24" FontWeight="Bold" Text="Nota Fiscal"/>
 
-<Grid Margin="8">
-	<TextBlock>Nota Fiscal</TextBlock>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
 
-	<TextBlock>Nome da Empresa</TextBlock>
-	<TextBlock>Rua da Empresa</TextBlock>
-	<TextBlock>Bairro da Empresa</TextBlock>
-	<TextBlock>CEP da Empresa</TextBlock>
-	<TextBlock>Fone da Empresa</TextBlock>
+		<TextBlock Grid.Row="0" Text="{Binding Empresa.Nome}"/>
+		<TextBlock Grid.Row="1" Text="{Binding Empresa.CNPJ}"/>
+		<TextBlock Grid.Row="2" Text="{Binding Empresa.Rua}"/>
+		<TextBlock Grid.Row="3" Text="{Binding Empresa.Bairro}"/>
+		<TextBlock Grid.Row="4" Text="{Binding Empresa.CEP}"/>
+		<TextBlock Grid.Row="5" Text="{Binding Empresa.Cidade}"/>
+		<TextBlock Grid.Row="6" Text="{Binding Empresa.UF}"/>
+		<TextBlock Grid.Row="7" Text="{Binding Empresa.Telefone}"/>
+	</Grid>
 
-	<TextBlock>Nome do Cliente</TextBlock>
-	<TextBlock>CPF do Cliente</TextBlock>
-	<TextBlock>Endereco do Cliente</TextBlock>
-	<TextBlock>Bairro do Cliente</TextBlock>
-	<TextBlock>CEP do Cliente</TextBlock>
-	<TextBlock>Cidade do Cliente</TextBlock>
-	<TextBlock>Telefone do Cliente</TextBlock>
-	<TextBlock>UF do Cliente</TextBlock>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
 
-	<TextBlock>Código do Produto</TextBlock>
-	<TextBlock>Nome do Produto</TextBlock>
-	<TextBlock>Unidade do Produto</TextBlock>
-	<TextBlock>Quantidade do Produto</TextBlock>
-	<TextBlock>Valor do Produto</TextBlock>
-	<TextBlock>Total do Produto</TextBlock>
+		<TextBlock Grid.Row="0" Text="{Binding Cliente.Nome}"/>
+		<TextBlock Grid.Row="1" Text="{Binding Cliente.CPF}"/>
+		<TextBlock Grid.Row="2" Text="{Binding Cliente.Endereco}"/>
+		<TextBlock Grid.Row="3" Text="{Binding Cliente.Bairro}"/>
+		<TextBlock Grid.Row="4" Text="{Binding Cliente.CEP}"/>
+		<TextBlock Grid.Row="5" Text="{Binding Cliente.Cidade}"/>
+		<TextBlock Grid.Row="6" Text="{Binding Cliente.Telefone}"/>
+		<TextBlock Grid.Row="7" Text="{Binding Cliente.UF}"/>
+	</Grid>
 
-	<TextBlock>Código da Nota</TextBlock>
-	<TextBlock>Total da Nota</TextBlock>
-</Grid>
+	<ItemsControl Items="{Binding}">
+		<ItemsControl.ItemTemplate>
+			<DataTemplate>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{Binding Produto.Nome}"/>
+					<TextBlock Text="{Binding Produto.Unidade}"/>
+					<TextBlock Text="{Binding Produto.Valor}"/>
+					<TextBlock Text="{Binding Quantidade}"/>
+					<TextBlock Text="{Binding Total}"/>
+				</StackPanel>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+	</ItemsControl>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Text="{Binding Total}"/>
+		<TextBlock Grid.Row="1" Text="{Binding Data}"/>
+		<TextBlock Grid.Row="2" Text="{Binding Codigo}"/>
+	</Grid>
+
+</StackPanel>
 
 </Window>

@@ -33,15 +33,15 @@ namespace Projeto3.DAO
         {
             comandoCadastrarNota = con.CriarComando("INSERT INTO nota (cliente, data) VALUES (@cliente, @data);");
             comandoCadastrarNota.Parameters.Add("@cliente", NpgsqlTypes.NpgsqlDbType.Integer);
-            comandoCadastrarNota.Parameters.Add("@data", NpgsqlTypes.NpgsqlDbType.Timestamp);
+            comandoCadastrarNota.Parameters.Add("@data",    NpgsqlTypes.NpgsqlDbType.Timestamp);
             comandoCadastrarNota.Prepare();
 
             resgatarCodigo = con.CriarComando("SELECT codigo FROM nota ORDER BY codigo DESC LIMIT 1;");
             resgatarCodigo.Prepare();
 
             comandoCadastrarProduto = con.CriarComando("INSERT INTO produto_comprado (nota, produto, quantidade) VALUES (@nota, @produto, @quantidade);");
-            comandoCadastrarProduto.Parameters.Add("@nota", NpgsqlTypes.NpgsqlDbType.Integer);
-            comandoCadastrarProduto.Parameters.Add("@produto", NpgsqlTypes.NpgsqlDbType.Integer);
+            comandoCadastrarProduto.Parameters.Add("@nota",       NpgsqlTypes.NpgsqlDbType.Integer);
+            comandoCadastrarProduto.Parameters.Add("@produto",    NpgsqlTypes.NpgsqlDbType.Integer);
             comandoCadastrarProduto.Parameters.Add("@quantidade", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoCadastrarProduto.Prepare();
         }
@@ -111,7 +111,7 @@ namespace Projeto3.DAO
 
             foreach (var p in nota.Produtos)
             {
-                defineParametrosProduto(comandoCadastrarProduto.Parameters, nota.Codigo, p.Item1.Codigo, p.Item2);
+                defineParametrosProduto(comandoCadastrarProduto.Parameters, nota.Codigo, p.Produto.Codigo, p.Quantidade);
                 comandoCadastrarProduto.ExecuteNonQuery();
             }
         }
@@ -127,13 +127,12 @@ namespace Projeto3.DAO
             var nota = new Nota();
 
             comandoBuscarNota.Parameters["@codigo"].NpgsqlValue = codigo;
-            comandoBuscarProdutos.Parameters["@nota"].NpgsqlValue = nota.Codigo;
-
             var reader = comandoBuscarNota.ExecuteReader();
             reader.Read();
             lerLinhaNota(reader, nota);
             reader.Close();
 
+            comandoBuscarProdutos.Parameters["@nota"].NpgsqlValue = nota.Codigo;
             reader = comandoBuscarProdutos.ExecuteReader();
             while (reader.Read())
             {
@@ -147,37 +146,36 @@ namespace Projeto3.DAO
 
         public void atualizar(Int32 codigo)
         {
-
         }
 
         private void lerLinhaProduto(NpgsqlDataReader reader, Nota nota)
         {
-            var quantidade = (Int32)reader["quantidade"];
+            var quantidade = (Int32) reader["quantidade"];
 
             var produto = new Produto();
-            produto.Codigo = (Int32)reader["produto"];
-            produto.Nome = (String)reader["nome"];
-            produto.Valor = (Int32)reader["valor"];
-            produto.Unidade = (String)reader["unidade"];
+            produto.Codigo =  (Int32)  reader["produto"];
+            produto.Nome =    (String) reader["nome"];
+            produto.Valor =   (Int32)  reader["valor"];
+            produto.Unidade = (String) reader["unidade"];
 
-            nota.Produtos.Add(Tuple.Create(produto, quantidade));
+            nota.Produtos.Add(new ProdutoComprado(produto, quantidade));
         }
 
         private void lerLinhaNota(NpgsqlDataReader reader, Nota nota)
         {
-            nota.Codigo = (Int32)reader["codigo"];
-            nota.Data = (DateTime)reader["data"];
+            nota.Codigo = (Int32)    reader["codigo"];
+            nota.Data =   (DateTime) reader["data"];
 
             var cliente = new Cliente();
-            cliente.Codigo = (Int32)reader["cliente"];
-            cliente.Nome = (String)reader["nome"];
-            cliente.Endereco = (String)reader["endereco"];
-            cliente.Bairro = (String)reader["bairro"];
-            cliente.Cidade = (String)reader["cidade"];
-            cliente.CEP = (String)reader["cep"];
-            cliente.Telefone = (String)reader["telefone"];
-            cliente.CPF = (String)reader["cpf"];
-            cliente.UF = (String)reader["uf"];
+            cliente.Codigo =   (Int32)  reader["cliente"];
+            cliente.Nome =     (String) reader["nome"];
+            cliente.Endereco = (String) reader["endereco"];
+            cliente.Bairro =   (String) reader["bairro"];
+            cliente.Cidade =   (String) reader["cidade"];
+            cliente.CEP =      (String) reader["cep"];
+            cliente.Telefone = (String) reader["telefone"];
+            cliente.CPF =      (String) reader["cpf"];
+            cliente.UF =       (String) reader["uf"];
 
             nota.Cliente = cliente;
         }
@@ -185,13 +183,13 @@ namespace Projeto3.DAO
         private void defineParametrosNota(NpgsqlParameterCollection parametros, Nota nota)
         {
             parametros["@cliente"].NpgsqlValue = nota.Cliente.Codigo;
-            parametros["@data"].NpgsqlValue = nota.Data;
+            parametros["@data"].NpgsqlValue    = nota.Data;
         }
 
         private void defineParametrosProduto(NpgsqlParameterCollection parametros, Int32 nota, Int32 produto, Int32 quantidade)
         {
-            parametros["@nota"].NpgsqlValue = nota;
-            parametros["@produto"].NpgsqlValue = produto;
+            parametros["@nota"].NpgsqlValue       = nota;
+            parametros["@produto"].NpgsqlValue    = produto;
             parametros["@quantidade"].NpgsqlValue = quantidade;
         }
     }

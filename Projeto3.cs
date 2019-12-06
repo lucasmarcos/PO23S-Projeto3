@@ -29,16 +29,6 @@ namespace Projeto3
 			_daoProduto = new DAOProduto(con);
 			_daoNota = new DAONota(con);
 
-			var empresa = new Empresa();
-			empresa.Nome = "Valve";
-			empresa.Rua = "Rua Goiás, 92";
-			empresa.UF = "PR";
-			empresa.Bairro = "Centro";
-			empresa.CEP = "85660-000";
-			empresa.Cidade = "Dois Vizinhos";
-			empresa.CNPJ = "12345678910";
-			empresa.Telefone = "+1 (49) 0000-9999";
-
 			Console.WriteLine("exibindo tela principal");
 			var janelaPrincipal = new JanelaPrincipal();
 			app.Run(janelaPrincipal);
@@ -58,7 +48,21 @@ namespace Projeto3
 
 		public static void MostarNotaFiscal()
 		{
-			var janelaImprimir = new JanelaImprimir();
+			var empresa = new Empresa();
+			empresa.Nome = "Valve";
+			empresa.Rua = "Rua Goiás, 92";
+			empresa.UF = "PR";
+			empresa.Bairro = "Centro";
+			empresa.CEP = "85660-000";
+			empresa.Cidade = "Dois Vizinhos";
+			empresa.CNPJ = "12345678910";
+			empresa.Telefone = "+1 (49) 0000-9999";
+
+			var nota = _daoNota.buscar(100);
+			nota.Empresa = empresa;
+
+			nota.Debug();
+			var janelaImprimir = new JanelaImprimir(nota);
 			janelaImprimir.Show();
 		}
 	}
