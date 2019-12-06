@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Projeto3.View.NotaProdutoComprado">
+
+<StackPanel Orientation="Horizontal">
+    <TextBlock Text="{Binding Item1.Nome}"/>
+    <TextBlock Text="{Binding Item1.Valor}"/>
+    <TextBlock Text="{Binding Item1.Unidade}"/>
+    <TextBlock Text="{Binding Item2}"/>
+    <TextBlock Text="{Binding Item3}"/>
+</StackPanel>
+
+</UserControl>
