@@ -20,5 +20,6 @@
 		<AvaloniaResource Include="View\JanelaImprimir.xaml"/>
 
 		<AvaloniaResource Include="View\NotaProdutoComprado.xaml"/>
+		<AvaloniaResource Include="View\NotaEmpresa.xaml"/>
 	</ItemGroup>
 </Project>

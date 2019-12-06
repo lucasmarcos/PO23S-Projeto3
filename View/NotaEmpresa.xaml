@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Projeto3.View.NotaEmpresa">
+
+<StackPanel Orientation="Horizontal">
+    <TextBlock Text="{Binding Nome}"/>
+	<TextBlock Text="{Binding CNPJ}"/>
+	<TextBlock Text="{Binding Rua}"/>
+	<TextBlock Text="{Binding Bairro}"/>
+	<TextBlock Text="{Binding CEP}"/>
+	<TextBlock Text="{Binding Cidade}"/>
+    <TextBlock Text="{Binding UF}"/>
+	<TextBlock Text="{Binding Telefone}"/>
+</StackPanel>
+
+</UserControl>

@@ -6,16 +6,7 @@
 <StackPanel>
 	<TextBlock FontSize="24" FontWeight="Bold" Text="Nota Fiscal"/>
 
-	<StackPanel Orientation="Horizontal">
-		<TextBlock Text="{Binding Empresa.Nome}"/>
-		<TextBlock Text="{Binding Empresa.CNPJ}"/>
-		<TextBlock Text="{Binding Empresa.Rua}"/>
-		<TextBlock Text="{Binding Empresa.Bairro}"/>
-		<TextBlock Text="{Binding Empresa.CEP}"/>
-		<TextBlock Text="{Binding Empresa.Cidade}"/>
-		<TextBlock Text="{Binding Empresa.UF}"/>
-		<TextBlock Text="{Binding Empresa.Telefone}"/>
-	</StackPanel>
+	<local:NotaEmpresa DataContext="{Binding Empresa}"/>
 
 	<Grid>
 		<Grid.RowDefinitions>

@@ -7,11 +7,9 @@ namespace Projeto3.View
 {
 	public class JanelaNovaNota : Window
 	{
-        private Empresa Empresa;
-
         public void SetEmpresa(Empresa e)
         {
-            Empresa = e;
+			DataContext = e;
         }
 
 		public JanelaNovaNota()
