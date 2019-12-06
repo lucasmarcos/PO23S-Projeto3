@@ -58,10 +58,9 @@ namespace Projeto3
 			empresa.CNPJ = "12345678910";
 			empresa.Telefone = "+1 (49) 0000-9999";
 
-			var nota = _daoNota.buscar(100);
+			var nota = _daoNota.Buscar(100);
 			nota.Empresa = empresa;
 
-			nota.Debug();
 			var janelaImprimir = new JanelaImprimir(nota);
 			janelaImprimir.Show();
 		}
