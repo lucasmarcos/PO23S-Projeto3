@@ -16,22 +16,22 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		public void BotaoCliente()
+		public void BotaoCliente(object s, object e)
 		{
 			App.MostarCliente();
 		}
 
-		public void BotaoProduto()
+		public void BotaoProduto(object s, object e)
 		{
 			App.MostarProduto();
 		}
 
-		public void BotaoNotas()
+		public void BotaoNotas(object s, object e)
 		{
 			App.MostarNotaFiscal();
 		}
 
-		public void BotaoEmitir()
+		public void BotaoEmitir(object s, object e)
 		{
 			App.MostarNotaFiscal();
 		}

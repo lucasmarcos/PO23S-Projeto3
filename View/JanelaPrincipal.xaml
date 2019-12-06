@@ -4,10 +4,10 @@
 	Title="Bem-vindo | Projeto 3" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
 
 <StackPanel Margin="8" MinWidth="360" VerticalAlignment="Center">
-	<Button Content="BotaoCliente + Novo Cliente"/>
-	<Button Content="BotaoProduto + Novo Produto"/>
-	<Button Content="BotaoNotas + Re-Imprimir Nota Fiscal"/>
-	<Button Content="BotaoEmitir + Emitir Nova Nota Fiscal"/>
+	<Button Click="BotaoCliente" Content="Novo Cliente"/>
+	<Button Click="BotaoProduto" Content="Novo Produto"/>
+	<Button Click="BotaoNotas"   Content="Re-Imprimir Nota Fiscal"/>
+	<Button Click="BotaoEmitir"  Content="Emitir Nova Nota Fiscal"/>
 </StackPanel>
 
 </Window>

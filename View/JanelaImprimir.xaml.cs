@@ -9,10 +9,9 @@ namespace Projeto3.View
 {
 	public class JanelaImprimir : Window
 	{
-		public Nota Nota
+		public void SetNota(Nota nota)
 		{
-			get => Nota = Nota;
-			set => DataContext = Nota;
+			DataContext = nota;
 		}
 
 		public JanelaImprimir()

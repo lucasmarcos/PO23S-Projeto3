@@ -23,7 +23,7 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		private void BotaoCadastrar()
+		private void BotaoCadastrar(object s, object e)
 		{
 			var cliente = ((Cliente) DataContext);
 			if (cliente.Validar())

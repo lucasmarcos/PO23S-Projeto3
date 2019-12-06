@@ -61,12 +61,12 @@
 		<TextBlock Grid.Row="2" Text="{Binding Codigo}"/>
 	</Grid>
 
-	<ItemsControl Items="{Binding ps}">
+	<ItemsControl Items="{Binding Produtos}">
 		<ItemsControl.ItemTemplate>
 			<DataTemplate>
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Text="olá viadinho!"/>
-					<TextBlock Text="{Binding}"/>
+					<TextBlock Text="{Binding Quantidade}"/>
 				</StackPanel>
 			</DataTemplate>
 		</ItemsControl.ItemTemplate>

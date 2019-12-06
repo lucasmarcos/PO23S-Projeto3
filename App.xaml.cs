@@ -1,5 +1,5 @@
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
+// using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 using Projeto3.DAO;
@@ -17,21 +17,20 @@ namespace Projeto3
 
 		public override void Initialize()
 		{
-			AvaloniaXamlLoader.Load(this);
-		}
-
-		public override void OnFrameworkInitializationCompleted()
-		{
-			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-    			desktop.MainWindow = new JanelaPrincipal();
-
 			_con = new Conexao();
 			_daoCliente = new DAOCliente(_con);
 			_daoProduto = new DAOProduto(_con);
 			_daoNota    = new DAONota(_con);
 
-			base.OnFrameworkInitializationCompleted();
+			AvaloniaXamlLoader.Load(this);
 		}
+
+		//	public override void OnFrameworkInitializationCompleted()
+		//	{
+		//		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+		//			desktop.MainWindow = new JanelaPrincipal();
+		//		base.OnFrameworkInitializationCompleted();
+		//	}
 
 		public static void MostarCliente()
 		{
@@ -62,7 +61,8 @@ namespace Projeto3
 			var nota = _daoNota.Buscar(100);
 			nota.Empresa = empresa;
 
-			var janelaImprimir = new JanelaImprimir {Nota = nota};
+			var janelaImprimir = new JanelaImprimir();
+			janelaImprimir.SetNota(nota);
 			janelaImprimir.Show();
 		}
 	}

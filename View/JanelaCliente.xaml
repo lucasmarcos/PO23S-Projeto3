@@ -44,7 +44,7 @@
 	<TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="UF"/>
 	<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding UF}"/>
 
-	<Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding BotaoCadastrar}" Content="Cadastrar"/>
+	<Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Click="BotaoCadastrar" Content="Cadastrar"/>
 </Grid>
 
 </Window>

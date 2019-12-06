@@ -20,10 +20,9 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		private void BotaoCadastrar()
+		private void BotaoCadastrar(object s, object e)
 		{
 			var produto = ((Produto) DataContext);
-			
 			if (produto.Validar())
 			{
 				DAOProduto.Cadastrar(produto);
