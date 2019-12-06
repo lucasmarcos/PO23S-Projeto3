@@ -7,11 +7,10 @@ namespace Projeto3.View
 {
 	public class JanelaProduto : Window
 	{
-		private readonly DAOProduto _daoProduto;
+		public DAOProduto DAOProduto { get; set; }
 
-		public JanelaProduto(DAOProduto d)
+		public JanelaProduto()
 		{
-			_daoProduto = d;
 			DataContext = new Produto();
 			InitializeComponent();
 		}
@@ -21,13 +20,13 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		private void BotaoCadastrar(object s, object e)
+		private void BotaoCadastrar()
 		{
 			var produto = ((Produto) DataContext);
 			
 			if (produto.Validar())
 			{
-				_daoProduto.Cadastrar(produto);
+				DAOProduto.Cadastrar(produto);
 				this.Close();
 			}
 		}

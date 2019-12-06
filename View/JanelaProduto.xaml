@@ -24,7 +24,7 @@
 	<TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Unidade"/>
 	<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Unidade}"/>
 
-	<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="BotaoCadastrar" Content="Cadastrar"/>
+	<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding BotaoCadastrar}" Content="Cadastrar"/>
 </Grid>
 
 </Window>

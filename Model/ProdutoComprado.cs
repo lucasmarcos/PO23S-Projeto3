@@ -13,5 +13,11 @@ namespace Projeto3.Model {
 			Quantidade = q;
 			Total = (p.Valor * q);
 		}
+
+		public void Debug()
+		{
+			Console.Write($"{Total}|{Quantidade}x|");
+			Produto.Debug();
+		}
 	}
 }

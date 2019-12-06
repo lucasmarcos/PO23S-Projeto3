@@ -1,3 +1,5 @@
+using System;
+
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
@@ -7,9 +9,14 @@ namespace Projeto3.View
 {
 	public class JanelaImprimir : Window
 	{
-		public JanelaImprimir(Nota nota)
+		public Nota Nota
 		{
-			DataContext = nota;
+			get => Nota = Nota;
+			set => DataContext = Nota;
+		}
+
+		public JanelaImprimir()
+		{
 			InitializeComponent();
 		}
 

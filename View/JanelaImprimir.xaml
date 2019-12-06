@@ -49,20 +49,6 @@
 		<TextBlock Grid.Row="7" Text="{Binding Cliente.UF}"/>
 	</Grid>
 
-	<ItemsControl Items="{Binding}">
-		<ItemsControl.ItemTemplate>
-			<DataTemplate>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="{Binding Produto.Nome}"/>
-					<TextBlock Text="{Binding Produto.Unidade}"/>
-					<TextBlock Text="{Binding Produto.Valor}"/>
-					<TextBlock Text="{Binding Quantidade}"/>
-					<TextBlock Text="{Binding Total}"/>
-				</StackPanel>
-			</DataTemplate>
-		</ItemsControl.ItemTemplate>
-	</ItemsControl>
-
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition/>
@@ -75,6 +61,16 @@
 		<TextBlock Grid.Row="2" Text="{Binding Codigo}"/>
 	</Grid>
 
+	<ItemsControl Items="{Binding ps}">
+		<ItemsControl.ItemTemplate>
+			<DataTemplate>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="olá viadinho!"/>
+					<TextBlock Text="{Binding}"/>
+				</StackPanel>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+	</ItemsControl>
 </StackPanel>
 
 </Window>

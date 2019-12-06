@@ -12,9 +12,12 @@ namespace Projeto3.Model
 		public DateTime Data { get; set; }
 		public Empresa Empresa { get; set; }
 
+		public List<string> ps;
+
 		public Nota()
 		{
 			Produtos = new List<ProdutoComprado>();
+			ps = new List<string>();
 		}
 
 		public void CalcularTotal()
@@ -32,8 +35,7 @@ namespace Projeto3.Model
 			Cliente.Debug();
 			foreach (var p in Produtos)
 			{
-				Console.Write($"{p.Total}|{p.Quantidade}x|");
-				p.Produto.Debug();
+				p.Debug();
 			}
 		}
 	}
