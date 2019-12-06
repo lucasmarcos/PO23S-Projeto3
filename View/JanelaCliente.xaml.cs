@@ -26,7 +26,7 @@ namespace Projeto3.View
 			var cliente = ((Cliente) DataContext);
 			if (cliente.Validar())
 			{
-				_daoCliente.cadastrar(cliente);
+				_daoCliente.Cadastrar(cliente);
 				this.Close();
 			}
 		}
