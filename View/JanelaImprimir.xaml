@@ -1,76 +1,71 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Projeto3.View;assembly=Projeto3"
 	x:Class="Projeto3.View.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
   
 <StackPanel>
 	<TextBlock FontSize="24" FontWeight="Bold" Text="Nota Fiscal"/>
 
+	<StackPanel Orientation="Horizontal">
+		<TextBlock Text="{Binding Empresa.Nome}"/>
+		<TextBlock Text="{Binding Empresa.CNPJ}"/>
+		<TextBlock Text="{Binding Empresa.Rua}"/>
+		<TextBlock Text="{Binding Empresa.Bairro}"/>
+		<TextBlock Text="{Binding Empresa.CEP}"/>
+		<TextBlock Text="{Binding Empresa.Cidade}"/>
+		<TextBlock Text="{Binding Empresa.UF}"/>
+		<TextBlock Text="{Binding Empresa.Telefone}"/>
+	</StackPanel>
+
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition/>
 			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Text="{Binding Empresa.Nome}"/>
-		<TextBlock Grid.Row="1" Text="{Binding Empresa.CNPJ}"/>
-		<TextBlock Grid.Row="2" Text="{Binding Empresa.Rua}"/>
-		<TextBlock Grid.Row="3" Text="{Binding Empresa.Bairro}"/>
-		<TextBlock Grid.Row="4" Text="{Binding Empresa.CEP}"/>
-		<TextBlock Grid.Row="5" Text="{Binding Empresa.Cidade}"/>
-		<TextBlock Grid.Row="6" Text="{Binding Empresa.UF}"/>
-		<TextBlock Grid.Row="7" Text="{Binding Empresa.Telefone}"/>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Cliente.Nome}"/>
+		<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Cliente.CPF}"/>
+		<TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Cliente.Telefone}"/>
+		<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Cliente.Endereco}"/>
+		<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Cliente.Bairro}"/>
+		<TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Cliente.Cidade}"/>
+		<TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Cliente.UF}"/>
+		<TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Cliente.CEP}"/>
 	</Grid>
 
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition/>
 			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Text="{Binding Cliente.Nome}"/>
-		<TextBlock Grid.Row="1" Text="{Binding Cliente.CPF}"/>
-		<TextBlock Grid.Row="2" Text="{Binding Cliente.Endereco}"/>
-		<TextBlock Grid.Row="3" Text="{Binding Cliente.Bairro}"/>
-		<TextBlock Grid.Row="4" Text="{Binding Cliente.CEP}"/>
-		<TextBlock Grid.Row="5" Text="{Binding Cliente.Cidade}"/>
-		<TextBlock Grid.Row="6" Text="{Binding Cliente.Telefone}"/>
-		<TextBlock Grid.Row="7" Text="{Binding Cliente.UF}"/>
-	</Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-
-		<TextBlock Grid.Row="0" Text="{Binding Total}"/>
-		<TextBlock Grid.Row="1" Text="{Binding Data}"/>
-		<TextBlock Grid.Row="2" Text="{Binding Codigo}"/>
+		<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Total}"/>
+		<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Data}"/>
+		<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Codigo}"/>
 	</Grid>
 
 	<ItemsControl Items="{Binding Produtos}">
 		<ItemsControl.ItemTemplate>
 			<DataTemplate>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="olá viadinho!"/>
-					<TextBlock Text="{Binding Quantidade}"/>
-				</StackPanel>
+				<local:NotaProdutoComprado DataContext="{Binding}"/>
 			</DataTemplate>
 		</ItemsControl.ItemTemplate>
 	</ItemsControl>
+
 </StackPanel>
 
 </Window>

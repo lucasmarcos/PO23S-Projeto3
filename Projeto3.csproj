@@ -1,19 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>netcoreapp2.2</TargetFramework>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="npgsql" Version="4.1.2"/>
-		<PackageReference Include="Avalonia.Desktop" Version="0.8.2"/>
+		<PackageReference Include="Avalonia.Desktop" Version="0.8.3"/>
 	</ItemGroup>
 
 	<ItemGroup>
 		<AvaloniaResource Include="App.xaml"/>
+
 		<AvaloniaResource Include="View\JanelaPrincipal.xaml"/>
 		<AvaloniaResource Include="View\JanelaCliente.xaml"/>
 		<AvaloniaResource Include="View\JanelaProduto.xaml"/>
 		<AvaloniaResource Include="View\JanelaImprimir.xaml"/>
+
+		<AvaloniaResource Include="View\NotaProdutoComprado.xaml"/>
 	</ItemGroup>
 </Project>

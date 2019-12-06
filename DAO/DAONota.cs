@@ -102,7 +102,7 @@ namespace Projeto3.DAO
 
             foreach (var p in nota.Produtos)
             {
-                DefineParametrosProduto(_comandoCadastrarProduto.Parameters, nota.Codigo, p.Produto.Codigo, p.Quantidade);
+                DefineParametrosProduto(_comandoCadastrarProduto.Parameters, nota.Codigo, p.Item1.Codigo, p.Item2);
                 _comandoCadastrarProduto.ExecuteNonQuery();
             }
         }
@@ -145,7 +145,7 @@ namespace Projeto3.DAO
             produto.Valor =   (Int32)  reader["valor"];
             produto.Unidade = (String) reader["unidade"];
 
-            nota.Produtos.Add(new ProdutoComprado(produto, quantidade));
+            nota.Produtos.Add(Tuple.Create(produto, quantidade, produto.Valor * quantidade));
         }
 
         private static void LerLinhaNota(NpgsqlDataReader reader, Nota nota)
