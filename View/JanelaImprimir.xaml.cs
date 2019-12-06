@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Projeto3
+namespace Projeto3.View
 {
 	public class JanelaImprimir : Window
 	{

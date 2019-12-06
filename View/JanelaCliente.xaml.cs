@@ -1,20 +1,17 @@
-using System;
-
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-
 using Projeto3.DAO;
 using Projeto3.Model;
 
-namespace Projeto3
+namespace Projeto3.View
 {
 	public class JanelaCliente : Window
 	{
-		private DAOCliente daoCliente;
+		private readonly DAOCliente _daoCliente;
 
 		public JanelaCliente(DAOCliente d)
 		{
-			daoCliente = d;
+			_daoCliente = d;
 			DataContext = new Cliente();
 			InitializeComponent();
 		}
@@ -24,11 +21,14 @@ namespace Projeto3
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		private void botaoCadastrar(object s, object e)
+		private void BotaoCadastrar(object s, object e)
 		{
 			var cliente = ((Cliente) DataContext);
-			daoCliente.cadastrar(cliente);
-			this.Close();
+			if (cliente.Validar())
+			{
+				_daoCliente.cadastrar(cliente);
+				this.Close();
+			}
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace Projeto3.DAO
 
         private void preparaCadastrar(Conexao con)
         {
-            comandoCadastrar = con.criarComando("INSERT INTO cliente (nome, cpf, endereco, bairro, cep, cidade, telefone, uf) VALUES (@nome, @cpf, @endereco, @bairro, @cep, @cidade, @telefone, @uf);");
+            comandoCadastrar = con.CriarComando("INSERT INTO cliente (nome, cpf, endereco, bairro, cep, cidade, telefone, uf) VALUES (@nome, @cpf, @endereco, @bairro, @cep, @cidade, @telefone, @uf);");
             comandoCadastrar.Parameters.Add("@nome", NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoCadastrar.Parameters.Add("@cpf", NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoCadastrar.Parameters.Add("@endereco", NpgsqlTypes.NpgsqlDbType.Varchar);
@@ -39,26 +39,26 @@ namespace Projeto3.DAO
             comandoCadastrar.Parameters.Add("@uf", NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoCadastrar.Prepare();
 
-            resgatarCodigo = con.criarComando("SELECT codigo FROM cliente ORDER BY codigo DESC LIMIT 1;");
+            resgatarCodigo = con.CriarComando("SELECT codigo FROM cliente ORDER BY codigo DESC LIMIT 1;");
             resgatarCodigo.Prepare();
         }
 
         private void preparaBuscar(Conexao con)
         {
-            comandoBuscar = con.criarComando("SELECT codigo, nome, cpf, endereco, bairro, cep, cidade, telefone, uf FROM cliente WHERE codigo = @codigo;");
+            comandoBuscar = con.CriarComando("SELECT codigo, nome, cpf, endereco, bairro, cep, cidade, telefone, uf FROM cliente WHERE codigo = @codigo;");
             comandoBuscar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoBuscar.Prepare();
         }
 
         private void preparaListar(Conexao con)
         {
-            comandoListar = con.criarComando("SELECT codigo, nome, cpf, endereco, bairro, cep, cidade, telefone, uf FROM cliente");
+            comandoListar = con.CriarComando("SELECT codigo, nome, cpf, endereco, bairro, cep, cidade, telefone, uf FROM cliente");
             comandoListar.Prepare();
         }
 
         private void preparaAtualizar(Conexao con)
         {
-            comandoAtualizar = con.criarComando("UPDATE cliente SET nome = @nome, cpf = @cpf, endereco = @endereco, bairro = @bairro, cep = @cep, cidade = @cidade, telefone = @telefone, uf = @uf WHERE codigo = @codigo");
+            comandoAtualizar = con.CriarComando("UPDATE cliente SET nome = @nome, cpf = @cpf, endereco = @endereco, bairro = @bairro, cep = @cep, cidade = @cidade, telefone = @telefone, uf = @uf WHERE codigo = @codigo");
             comandoAtualizar.Parameters.Add("@nome", NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoAtualizar.Parameters.Add("@cpf", NpgsqlTypes.NpgsqlDbType.Varchar);
             comandoAtualizar.Parameters.Add("@endereco", NpgsqlTypes.NpgsqlDbType.Varchar);
@@ -73,7 +73,7 @@ namespace Projeto3.DAO
 
         private void preparaRemover(Conexao con)
         {
-            comandoRemover = con.criarComando("DELETE FROM cliente WHERE codigo = @codigo;");
+            comandoRemover = con.CriarComando("DELETE FROM cliente WHERE codigo = @codigo;");
             comandoRemover.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoRemover.Prepare();
         }

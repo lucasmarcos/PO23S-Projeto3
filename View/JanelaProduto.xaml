@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="Projeto3.JanelaProduto" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
+	x:Class="Projeto3.View.JanelaProduto" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
 
 <Grid Margin="8" MinWidth="460" VerticalAlignment="Center">
 	<Grid.ColumnDefinitions>
@@ -15,16 +15,16 @@
 		<RowDefinition Height="Auto"/>
 	</Grid.RowDefinitions>
 
-	<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right">Nome</TextBlock>
+	<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Nome"/>
 	<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Nome}"/>
 
-	<TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right">Valor</TextBlock>
+	<TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Valor"/>
 	<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Valor}"/>
 
-	<TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right">Unidade</TextBlock>
+	<TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Unidade"/>
 	<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Unidade}"/>
 
-	<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="botaoCadastrar">Cadastrar</Button>
+	<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="BotaoCadastrar" Content="Cadastrar"/>
 </Grid>
 
 </Window>

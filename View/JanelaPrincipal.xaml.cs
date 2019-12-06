@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Projeto3
+namespace Projeto3.View
 {
 	public class JanelaPrincipal : Window
 	{
@@ -15,24 +15,24 @@ namespace Projeto3
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		private void botaoCliente(object s, object e)
+		private void BotaoCliente(object s, object e)
 		{
-			Projeto3.mostarCliente();
+			Projeto3.MostarCliente();
 		}
 
-		private void botaoProduto(object s, object e)
+		private void BotaoProduto(object s, object e)
 		{
-			Projeto3.mostarProduto();
+			Projeto3.MostarProduto();
 		}
 
-		private void botaoNotas(object s, object e)
+		private void BotaoNotas(object s, object e)
 		{
-			Projeto3.mostarNotaFiscal();
+			Projeto3.MostarNotaFiscal();
 		}
 
-		private void botaoEmitir(object s, object e)
+		private void BotaoEmitir(object s, object e)
 		{
-			Projeto3.mostarNotaFiscal();
+			Projeto3.MostarNotaFiscal();
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace Projeto3.Model
 			Produtos = new List<Tuple<Produto, int>>();
 		}
 
-		public void calcularTotal()
+		public void CalcularTotal()
 		{
 			Total = 0;
 			foreach (var p in Produtos)
@@ -25,14 +25,14 @@ namespace Projeto3.Model
 			}
 		}
 
-		public void debug()
+		public void Debug()
 		{
 			Console.WriteLine($"nota:{Codigo}|{Data}|{Total}");
-			Cliente.debug();
+			Cliente.Debug();
 			foreach (var p in Produtos)
 			{
 				Console.Write($"{p.Item2}x ");
-				p.Item1.debug();
+				p.Item1.Debug();
 			}
 		}
 	}

@@ -4,14 +4,15 @@ using Avalonia;
 
 using Projeto3.DAO;
 using Projeto3.Model;
+using Projeto3.View;
 
 namespace Projeto3
 {
-	public class Projeto3
+	public static class Projeto3
 	{
-		private static DAOCliente daoCliente;
-		private static DAOProduto daoProduto;
-		private static DAONota daoNota;
+		private static DAOCliente _daoCliente;
+		private static DAOProduto _daoProduto;
+		private static DAONota _daoNota;
 
 		public static void Main(string[] args)
 		{
@@ -24,9 +25,9 @@ namespace Projeto3
 		{
 			Console.WriteLine("conectando ao banco");
 			var con = new Conexao();
-			Projeto3.daoCliente = new DAOCliente(con);
-			Projeto3.daoProduto = new DAOProduto(con);
-			Projeto3.daoNota = new DAONota(con);
+			_daoCliente = new DAOCliente(con);
+			_daoProduto = new DAOProduto(con);
+			_daoNota = new DAONota(con);
 
 			var empresa = new Empresa();
 			empresa.Nome = "Valve";
@@ -43,19 +44,19 @@ namespace Projeto3
 			app.Run(janelaPrincipal);
 		}
 
-		public static void mostarCliente()
+		public static void MostarCliente()
 		{
-			var janelaCliente = new JanelaCliente(daoCliente);
+			var janelaCliente = new JanelaCliente(_daoCliente);
 			janelaCliente.Show();
 		}
 
-		public static void mostarProduto()
+		public static void MostarProduto()
 		{
-			var janelaProduto = new JanelaProduto(daoProduto);
+			var janelaProduto = new JanelaProduto(_daoProduto);
 			janelaProduto.Show();
 		}
 
-		public static void mostarNotaFiscal()
+		public static void MostarNotaFiscal()
 		{
 			var janelaImprimir = new JanelaImprimir();
 			janelaImprimir.Show();

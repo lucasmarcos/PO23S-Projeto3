@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="Projeto3.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16">
+	x:Class="Projeto3.View.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16">
 
 <Grid Margin="8">
 	<TextBlock>Nota Fiscal</TextBlock>

@@ -13,7 +13,7 @@ namespace Projeto3.Model
 		public String UF { get; set; }
 		public String Telefone { get; set; }
 
-		public void debug()
+		public void Debug()
 		{
 			Console.WriteLine($"empresa:{Nome}|{CNPJ}|{Rua}|{Bairro}|{CEP}|{Cidade}|{Telefone}|{UF}");
 		}

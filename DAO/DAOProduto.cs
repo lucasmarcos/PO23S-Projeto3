@@ -9,73 +9,73 @@ namespace Projeto3.DAO
 {
     public class DAOProduto
     {
-        private NpgsqlCommand comandoCadastrar;
-        private NpgsqlCommand comandoBuscar;
-        private NpgsqlCommand comandoListar;
-        private NpgsqlCommand comandoAtualizar;
-        private NpgsqlCommand comandoRemover;
-        private NpgsqlCommand resgatarCodigo;
+        private NpgsqlCommand _comandoCadastrar;
+        private NpgsqlCommand _comandoBuscar;
+        private NpgsqlCommand _comandoListar;
+        private NpgsqlCommand _comandoAtualizar;
+        private NpgsqlCommand _comandoRemover;
+        private NpgsqlCommand _resgatarCodigo;
 
         public DAOProduto(Conexao con)
         {
-            preparaCadastrar(con);
-            preparaBuscar(con);
-            preparaListar(con);
-            preparaAtualizar(con);
-            preparaRemover(con);
+            PreparaCadastrar(con);
+            PreparaBuscar(con);
+            PreparaListar(con);
+            PreparaAtualizar(con);
+            PreparaRemover(con);
         }
 
-        private void preparaCadastrar(Conexao con)
+        private void PreparaCadastrar(Conexao con)
         {
-            comandoCadastrar = con.criarComando("INSERT INTO produto (nome, valor, unidade) VALUES (@nome, @valor, @unidade);");
-            comandoCadastrar.Parameters.Add("@nome", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoCadastrar.Parameters.Add("@valor", NpgsqlTypes.NpgsqlDbType.Integer);
-            comandoCadastrar.Parameters.Add("@unidade", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoCadastrar.Prepare();
+            _comandoCadastrar = con.CriarComando("INSERT INTO produto (nome, valor, unidade) VALUES (@nome, @valor, @unidade);");
+            _comandoCadastrar.Parameters.Add("@nome",    NpgsqlTypes.NpgsqlDbType.Varchar);
+            _comandoCadastrar.Parameters.Add("@valor",   NpgsqlTypes.NpgsqlDbType.Integer);
+            _comandoCadastrar.Parameters.Add("@unidade", NpgsqlTypes.NpgsqlDbType.Varchar);
+            _comandoCadastrar.Prepare();
 
-            resgatarCodigo = con.criarComando("SELECT codigo FROM produto ORDER BY codigo DESC LIMIT 1;");
-            resgatarCodigo.Prepare();
+            _resgatarCodigo = con.CriarComando("SELECT codigo FROM produto ORDER BY codigo DESC LIMIT 1;");
+            _resgatarCodigo.Prepare();
         }
 
-        private void preparaBuscar(Conexao con)
+        private void PreparaBuscar(Conexao con)
         {
-            comandoBuscar = con.criarComando("SELECT codigo, nome, valor, unidade FROM produto WHERE codigo = @codigo;");
-            comandoBuscar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
-            comandoBuscar.Prepare();
+            _comandoBuscar = con.CriarComando("SELECT codigo, nome, valor, unidade FROM produto WHERE codigo = @codigo;");
+            _comandoBuscar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
+            _comandoBuscar.Prepare();
         }
 
-        private void preparaListar(Conexao con)
+        private void PreparaListar(Conexao con)
         {
-            comandoListar = con.criarComando("SELECT codigo, nome, valor, unidade FROM produto;");
-            comandoListar.Prepare();
+            _comandoListar = con.CriarComando("SELECT codigo, nome, valor, unidade FROM produto;");
+            _comandoListar.Prepare();
         }
 
-        private void preparaAtualizar(Conexao con)
+        private void PreparaAtualizar(Conexao con)
         {
-            comandoAtualizar = con.criarComando("UPDATE produto SET nome = @nome, valor = @valor, unidade = @unidade WHERE codigo = @codigo;");
-            comandoAtualizar.Parameters.Add("@nome", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@valor", NpgsqlTypes.NpgsqlDbType.Integer);
-            comandoAtualizar.Parameters.Add("@unidade", NpgsqlTypes.NpgsqlDbType.Varchar);
-            comandoAtualizar.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
-            comandoAtualizar.Prepare();
+            _comandoAtualizar = con.CriarComando("UPDATE produto SET nome = @nome, valor = @valor, unidade = @unidade WHERE codigo = @codigo;");
+            _comandoAtualizar.Parameters.Add("@nome",    NpgsqlTypes.NpgsqlDbType.Varchar);
+            _comandoAtualizar.Parameters.Add("@valor",   NpgsqlTypes.NpgsqlDbType.Integer);
+            _comandoAtualizar.Parameters.Add("@unidade", NpgsqlTypes.NpgsqlDbType.Varchar);
+            _comandoAtualizar.Parameters.Add("@codigo",  NpgsqlTypes.NpgsqlDbType.Integer);
+            _comandoAtualizar.Prepare();
         }
 
-        private void preparaRemover(Conexao con)
+        private void PreparaRemover(Conexao con)
         {
-            comandoRemover = con.criarComando("DELETE FROM produto WHERE codigo = @codigo;");
-            comandoRemover.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
-            comandoRemover.Prepare();
+            _comandoRemover = con.CriarComando("DELETE FROM produto WHERE codigo = @codigo;");
+            _comandoRemover.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
+            _comandoRemover.Prepare();
         }
 
-        public List<Produto> listarProdutos()
+        public List<Produto> ListarProdutos()
         {
             var lista = new List<Produto>();
 
-            var reader = comandoListar.ExecuteReader();
+            var reader = _comandoListar.ExecuteReader();
             while (reader.Read())
             {
                 var produto = new Produto();
-                lerLinha(reader, produto);
+                LerLinha(reader, produto);
                 lista.Add(produto);
             }
 
@@ -84,52 +84,52 @@ namespace Projeto3.DAO
             return lista;
         }
 
-        public void cadastrar(Produto produto)
+        public void Cadastrar(Produto produto)
         {
-            defineParamentros(comandoCadastrar.Parameters, produto);
-            comandoCadastrar.ExecuteNonQuery();
+            DefineParamentros(_comandoCadastrar.Parameters, produto);
+            _comandoCadastrar.ExecuteNonQuery();
 
-            produto.Codigo = (Int32)resgatarCodigo.ExecuteScalar();
+            produto.Codigo = (Int32)_resgatarCodigo.ExecuteScalar();
         }
 
-        public void remover(Produto produto)
+        public void Remover(Produto produto)
         {
-            comandoRemover.Parameters["@codigo"].NpgsqlValue = produto.Codigo;
-            comandoRemover.ExecuteNonQuery();
+            _comandoRemover.Parameters["@codigo"].NpgsqlValue = produto.Codigo;
+            _comandoRemover.ExecuteNonQuery();
         }
 
-        public void atualizar(Produto produto)
+        public void Atualizar(Produto produto)
         {
-            comandoAtualizar.Parameters["@codigo"].NpgsqlValue = produto.Codigo;
-            defineParamentros(comandoAtualizar.Parameters, produto);
-            comandoAtualizar.ExecuteNonQuery();
+            _comandoAtualizar.Parameters["@codigo"].NpgsqlValue = produto.Codigo;
+            DefineParamentros(_comandoAtualizar.Parameters, produto);
+            _comandoAtualizar.ExecuteNonQuery();
         }
 
-        public Produto buscar(Int32 codigo)
+        public Produto Buscar(Int32 codigo)
         {
-            comandoBuscar.Parameters["@codigo"].NpgsqlValue = codigo;
-            var reader = comandoBuscar.ExecuteReader();
+            _comandoBuscar.Parameters["@codigo"].NpgsqlValue = codigo;
+            var reader = _comandoBuscar.ExecuteReader();
             reader.Read();
 
             var produto = new Produto();
-            lerLinha(reader, produto);
+            LerLinha(reader, produto);
             reader.Close();
 
             return produto;
         }
 
-        private void lerLinha(NpgsqlDataReader reader, Produto produto)
+        private static void LerLinha(NpgsqlDataReader reader, Produto produto)
         {
-            produto.Codigo = (Int32)reader["codigo"];
-            produto.Nome = (String)reader["nome"];
-            produto.Valor = (Int32)reader["valor"];
-            produto.Unidade = (String)reader["unidade"];
+            produto.Codigo  = (Int32)  reader["codigo"];
+            produto.Nome    = (String) reader["nome"];
+            produto.Valor   = (Int32)  reader["valor"];
+            produto.Unidade = (String) reader["unidade"];
         }
 
-        private void defineParamentros(NpgsqlParameterCollection paramentros, Produto produto)
+        private static void DefineParamentros(NpgsqlParameterCollection paramentros, Produto produto)
         {
-            paramentros["@nome"].NpgsqlValue = produto.Nome;
-            paramentros["@valor"].NpgsqlValue = produto.Valor;
+            paramentros["@nome"].NpgsqlValue    = produto.Nome;
+            paramentros["@valor"].NpgsqlValue   = produto.Valor;
             paramentros["@unidade"].NpgsqlValue = produto.Unidade;
         }
     }

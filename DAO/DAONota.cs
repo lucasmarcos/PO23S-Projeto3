@@ -31,15 +31,15 @@ namespace Projeto3.DAO
 
         private void preparaCadastrar(Conexao con)
         {
-            comandoCadastrarNota = con.criarComando("INSERT INTO nota (cliente, data) VALUES (@cliente, @data);");
+            comandoCadastrarNota = con.CriarComando("INSERT INTO nota (cliente, data) VALUES (@cliente, @data);");
             comandoCadastrarNota.Parameters.Add("@cliente", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoCadastrarNota.Parameters.Add("@data", NpgsqlTypes.NpgsqlDbType.Timestamp);
             comandoCadastrarNota.Prepare();
 
-            resgatarCodigo = con.criarComando("SELECT codigo FROM nota ORDER BY codigo DESC LIMIT 1;");
+            resgatarCodigo = con.CriarComando("SELECT codigo FROM nota ORDER BY codigo DESC LIMIT 1;");
             resgatarCodigo.Prepare();
 
-            comandoCadastrarProduto = con.criarComando("INSERT INTO produto_comprado (nota, produto, quantidade) VALUES (@nota, @produto, @quantidade);");
+            comandoCadastrarProduto = con.CriarComando("INSERT INTO produto_comprado (nota, produto, quantidade) VALUES (@nota, @produto, @quantidade);");
             comandoCadastrarProduto.Parameters.Add("@nota", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoCadastrarProduto.Parameters.Add("@produto", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoCadastrarProduto.Parameters.Add("@quantidade", NpgsqlTypes.NpgsqlDbType.Integer);
@@ -48,27 +48,27 @@ namespace Projeto3.DAO
 
         private void preparaBuscar(Conexao con)
         {
-            comandoBuscarNota = con.criarComando("SELECT nota.codigo, nota.data, nota.cliente, cliente.nome, cliente.cpf, cliente.endereco, cliente.bairro, cliente.cep, cliente.cidade, cliente.telefone, cliente.uf FROM nota, cliente WHERE nota.cliente = cliente.codigo AND nota.codigo = @codigo;");
+            comandoBuscarNota = con.CriarComando("SELECT nota.codigo, nota.data, nota.cliente, cliente.nome, cliente.cpf, cliente.endereco, cliente.bairro, cliente.cep, cliente.cidade, cliente.telefone, cliente.uf FROM nota, cliente WHERE nota.cliente = cliente.codigo AND nota.codigo = @codigo;");
             comandoBuscarNota.Parameters.Add("@codigo", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoBuscarNota.Prepare();
 
-            comandoBuscarProdutos = con.criarComando("SELECT produto_comprado.produto, produto.nome, produto.valor, produto.unidade, produto_comprado.quantidade FROM produto_comprado, produto WHERE produto_comprado.produto = produto.codigo AND produto_comprado.nota = @nota;");
+            comandoBuscarProdutos = con.CriarComando("SELECT produto_comprado.produto, produto.nome, produto.valor, produto.unidade, produto_comprado.quantidade FROM produto_comprado, produto WHERE produto_comprado.produto = produto.codigo AND produto_comprado.nota = @nota;");
             comandoBuscarProdutos.Parameters.Add("@nota", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoBuscarProdutos.Prepare();
 
-            comandoListarNotas = con.criarComando("SELECT nota.codigo, nota.data, nota.cliente, cliente.nome, cliente.cpf, cliente.endereco, cliente.bairro, cliente.cep, cliente.cidade, cliente.telefone, cliente.uf FROM nota, cliente WHERE nota.cliente = cliente.codigo;");
+            comandoListarNotas = con.CriarComando("SELECT nota.codigo, nota.data, nota.cliente, cliente.nome, cliente.cpf, cliente.endereco, cliente.bairro, cliente.cep, cliente.cidade, cliente.telefone, cliente.uf FROM nota, cliente WHERE nota.cliente = cliente.codigo;");
             comandoListarNotas.Prepare();
         }
 
         private void preparaAtualizar(Conexao con)
         {
-            comandoAtualizar = con.criarComando("");
+            comandoAtualizar = con.CriarComando("");
             comandoAtualizar.Prepare();
         }
 
         private void preparaRemover(Conexao con)
         {
-            comandoRemoverNota = con.criarComando("DELETE FROM nota WHERE codigo = @codigo;");
+            comandoRemoverNota = con.CriarComando("DELETE FROM nota WHERE codigo = @codigo;");
             comandoRemoverNota.Parameters.Add("@nota", NpgsqlTypes.NpgsqlDbType.Integer);
             comandoRemoverNota.Prepare();
         }
@@ -96,7 +96,7 @@ namespace Projeto3.DAO
                 }
                 reader.Close();
 
-                n.calcularTotal();
+                n.CalcularTotal();
             }
 
             return notas;
@@ -141,7 +141,7 @@ namespace Projeto3.DAO
             }
             reader.Close();
 
-            nota.calcularTotal();
+            nota.CalcularTotal();
             return nota;
         }
 
