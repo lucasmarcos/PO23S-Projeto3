@@ -1,3 +1,4 @@
+using Avalonia.Interactivity;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
@@ -22,13 +23,13 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		public void SelecionarCliente(object s, object e)
+		public void SelecionarCliente(object s, RoutedEventArgs e)
 		{
 			var janelaListarClientes = new JanelaListarClientes();
 			janelaListarClientes.ShowDialog(this);
 		}
 
-		public void AdicionarProduto(object s, object e)
+		public void AdicionarProduto(object s, RoutedEventArgs e)
 		{
 			var janelaListarProdutos = new JanelaListarProdutos();
 			janelaListarProdutos.ShowDialog(this);

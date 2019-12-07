@@ -11,11 +11,6 @@ namespace Projeto3
 			AppBuilder.Configure<App>().UsePlatformDetect();
 
 		public static void Main(string[] args) =>
-			BuildAvaloniaApp().Start(Inicio, args);
-
-		private static void Inicio(Application app, string[] args)
-		{
-			app.Run(new JanelaPrincipal());
-		}
+			BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
 	}
 }

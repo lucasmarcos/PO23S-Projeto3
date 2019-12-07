@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 using Projeto3.DAO;
@@ -25,12 +26,12 @@ namespace Projeto3
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		//	public override void OnFrameworkInitializationCompleted()
-		//	{
-		//		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-		//			desktop.MainWindow = new JanelaPrincipal();
-		//		base.OnFrameworkInitializationCompleted();
-		//	}
+		public override void OnFrameworkInitializationCompleted()
+		{
+			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+				desktop.MainWindow = new JanelaPrincipal();
+			base.OnFrameworkInitializationCompleted();
+		}
 
 		public static void MostarCliente(Window w)
 		{

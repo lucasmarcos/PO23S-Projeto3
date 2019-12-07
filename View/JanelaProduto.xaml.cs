@@ -1,3 +1,4 @@
+using Avalonia.Interactivity;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Projeto3.DAO;
@@ -20,7 +21,7 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		private void BotaoCadastrar(object s, object e)
+		public void BotaoCadastrar(object s, RoutedEventArgs e)
 		{
 			var produto = ((Produto) DataContext);
 			if (produto.Validar())

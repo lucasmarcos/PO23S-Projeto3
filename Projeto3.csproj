@@ -5,25 +5,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="npgsql" Version="4.1.2"/>
-		<PackageReference Include="Avalonia.Desktop" Version="0.8.3"/>
+		<PackageReference Include="FastReport.OpenSource" Version="2020.1.0" />
+		<PackageReference Include="Npgsql"                Version="4.1.2" />
+		<PackageReference Include="Avalonia.Desktop"      Version="0.9.0-rc.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<AvaloniaResource Include="App.xaml"/>
+		<Compile Update="**\*.xaml.cs">
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
 
-		<AvaloniaResource Include="View\JanelaPrincipal.xaml"/>
-
-		<AvaloniaResource Include="View\JanelaCliente.xaml"/>
-		<AvaloniaResource Include="View\JanelaProduto.xaml"/>
-
-		<AvaloniaResource Include="View\JanelaNovaNota.xaml"/>
-		<AvaloniaResource Include="View\JanelaListarClientes.xaml"/>
-		<AvaloniaResource Include="View\JanelaListarProdutos.xaml"/>
-
-		<AvaloniaResource Include="View\JanelaImprimir.xaml"/>
-		<AvaloniaResource Include="View\NotaProdutoComprado.xaml"/>
-		<AvaloniaResource Include="View\NotaEmpresa.xaml"/>
-		<AvaloniaResource Include="View\NotaCliente.xaml"/>
+		<AvaloniaResource Include="**\*.xaml">
+			<SubType>Designer</SubType>
+		</AvaloniaResource>
 	</ItemGroup>
 </Project>

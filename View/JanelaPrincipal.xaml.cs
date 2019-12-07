@@ -1,3 +1,4 @@
+using Avalonia.Interactivity;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
@@ -15,22 +16,22 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		public void BotaoCliente(object s, object e)
+		public void BotaoCliente(object s, RoutedEventArgs e)
 		{
 			App.MostarCliente(this);
 		}
 
-		public void BotaoProduto(object s, object e)
+		public void BotaoProduto(object s, RoutedEventArgs e)
 		{
 			App.MostarProduto(this);
 		}
 
-		public void BotaoNotas(object s, object e)
+		public void BotaoNotas(object s, RoutedEventArgs e)
 		{
 			App.MostarNotaFiscal(this);
 		}
 
-		public void BotaoEmitir(object s, object e)
+		public void BotaoEmitir(object s, RoutedEventArgs e)
 		{
 			App.NovaNotaFiscal(this);
 		}
