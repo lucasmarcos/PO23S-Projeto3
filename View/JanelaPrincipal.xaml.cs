@@ -35,5 +35,10 @@ namespace Projeto3.View
 		{
 			App.NovaNotaFiscal(this);
 		}
+
+		public void BotaoEmpresa(object s, RoutedEventArgs e)
+		{
+			App.ConfigurarEmpresa(this);
+		}
 	}
 }

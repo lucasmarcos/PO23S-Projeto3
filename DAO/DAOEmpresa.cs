@@ -57,28 +57,20 @@ namespace Projeto3.DAO
             _comandoBuscar.Parameters["@chave"].NpgsqlValue = "empresa.rua";
             empresa.Rua = (String) _comandoBuscar.ExecuteScalar();
 
-
-/*
-			var empresa = new Empresa
-			{
-				Nome     = "Valve",
-				Rua      = "Rua Goiás, 92",
-				UF       = "PR",
-				Bairro   = "Centro",
-				CEP      = "85660-000",
-				Cidade   = "Dois Vizinhos",
-				CNPJ     = "12345678910",
-				Telefone = "+1 (49) 0000-9999"
-			};
-*/
-
             return empresa;
         }
-
-        private static void DefineParamentros(NpgsqlParameterCollection paramentros, String chave, String valor)
+        
+        public void Salvar(Empresa empresa)
         {
-            paramentros["@chave"].NpgsqlValue = chave;
-            paramentros["@valor"].NpgsqlValue = valor;
+            DefineParamentros("empresa.nome", empresa.Nome);
+            DefineParamentros("empresa.cnpf", empresa.CNPJ);
+        }
+
+        private void DefineParamentros(String chave, String valor)
+        {
+            _comandoConfiguar.Parameters["@chave"].NpgsqlValue = chave;
+            _comandoConfiguar.Parameters["@valor"].NpgsqlValue = valor;
+            _comandoConfiguar.ExecuteNonQuery();
         }
     }
 }

@@ -65,5 +65,13 @@ namespace Projeto3
 			janelaNovaNota.SetEmpresa(empresa);
 			janelaNovaNota.ShowDialog(w);
 		}
+
+		public static void ConfigurarEmpresa(Window w)
+		{
+			var empresa = _daoEmpresa.Buscar();
+			var configurarEmpresa = new ConfigurarEmpresa();
+			configurarEmpresa.SetEmpresa(empresa);
+			configurarEmpresa.ShowDialog(w);
+		}
 	}
 }

@@ -60,8 +60,8 @@ INSERT INTO configuracao (chave, valor) VALUES
 	('empresa.nome',     'Valve'),
 	('empresa.cnpj',     '10987654321'),
 	('empresa.uf',       'PR'),
-	('empresa.bairro',   'PR'),
-	('empresa.cidade',   'PR'),
-	('empresa.telefone', 'PR'),
-	('empresa.cep',      'PR'),
-	('empresa.rua',      'Rua Goias, 92');
+	('empresa.bairro',   'Centro'),
+	('empresa.cidade',   'Dois Vizinhos'),
+	('empresa.telefone', '+1 (49) 0000-9999'),
+	('empresa.cep',      '85660-000'),
+	('empresa.rua',      'Rua Goiás, 92');
