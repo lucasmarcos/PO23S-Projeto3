@@ -3,7 +3,9 @@
     x:Class="Projeto3.View.NotaEmpresa">
 
 <StackPanel Orientation="Horizontal">
+    <TextBlock FontWeight="Bold" Text="Nome Fantasia"/>
     <TextBlock Text="{Binding Nome}"/>
+	<TextBlock FontWeight="Bold" Text="CNPJ"/>
 	<TextBlock Text="{Binding CNPJ}"/>
 	<TextBlock Text="{Binding Rua}"/>
 	<TextBlock Text="{Binding Bairro}"/>

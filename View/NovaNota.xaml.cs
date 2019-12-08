@@ -16,13 +16,10 @@ namespace Projeto3.View
 		public DAONota DAONota { get; set; }
 		public Empresa Empresa { get; set; }
 
-		private ObservableCollection<Tuple<Produto, Int32, Int32>> _produtos;
-
 		public NovaNota()
 		{
 			InitializeComponent();
-			_produtos = new ObservableCollection<Tuple<Produto, Int32, Int32>>();
-			DataContext = new Nota {Produtos = _produtos};
+			DataContext = new Nota();
 		}
 
 		private void InitializeComponent()
@@ -45,6 +42,11 @@ namespace Projeto3.View
 			((Nota) DataContext).Cliente = c;
 		}
 
+		public void RemoverCliente(object s, RoutedEventArgs e)
+		{
+			((Nota) DataContext).Cliente = null;
+		}
+
 		public void AdicionarProduto(object s, RoutedEventArgs e)
 		{
 			App.ListarProdutos(this);
@@ -52,7 +54,7 @@ namespace Projeto3.View
 
 		public void AdicionarProduto(Produto p)
 		{
-			_produtos.Add(Tuple.Create(p, 1, p.Valor));
+			((Nota) DataContext).Produtos.Add(Tuple.Create(p, 1, p.Valor));
 		}
 
 		public void Emitir(object s, RoutedEventArgs e)

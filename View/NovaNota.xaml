@@ -6,10 +6,10 @@
 <StackPanel>
 	<local:NotaEmpresa DataContext="{Binding Empresa}"/>
 
-	<StackPanel Orientation="Horizontal">
+	<StackPanel Orientation="Horizontal" IsVisible="{Binding !!Cliente}">
 		<local:NotaCliente DataContext="{Binding Cliente}"/>
-		<Button Content="X"/>
 	</StackPanel>
+
 	<Button Click="SelecionarCliente" Content="Selectionar Cliente"/>
 
 	<local:NotaProdutoComprado DataContext="{Binding Produtos}"/>
