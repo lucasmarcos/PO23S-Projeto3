@@ -1,0 +1,13 @@
+<Window xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Projeto3.View.ListarProdutos" SizeToContent="WidthAndHeight">
+
+<StackPanel>
+	<TextBlock Text="olá viadinho"/>
+
+	<DataGrid Items="{Binding}" AutoGenerateColumns="True"/>
+
+	<Button Content="Selecionar"/>
+</StackPanel>
+
+</Window>

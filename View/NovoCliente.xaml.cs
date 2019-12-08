@@ -1,18 +1,19 @@
-using Avalonia.Interactivity;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+
 using Projeto3.DAO;
 using Projeto3.Model;
 
 namespace Projeto3.View
 {
-	public class JanelaProduto : Window
+	public class NovoCliente : Window
 	{
-		public DAOProduto DAOProduto { get; set; }
+		public DAOCliente DAOCliente { get; set; }
 
-		public JanelaProduto()
+		public NovoCliente()
 		{
-			DataContext = new Produto();
+			DataContext = new Cliente();
 			InitializeComponent();
 		}
 
@@ -23,10 +24,10 @@ namespace Projeto3.View
 
 		public void BotaoCadastrar(object s, RoutedEventArgs e)
 		{
-			var produto = ((Produto) DataContext);
-			if (produto.Validar())
+			var cliente = ((Cliente) DataContext);
+			if (cliente.Validar())
 			{
-				DAOProduto.Cadastrar(produto);
+				DAOCliente.Cadastrar(cliente);
 				this.Close();
 			}
 		}

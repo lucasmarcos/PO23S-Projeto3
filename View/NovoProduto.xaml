@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="Projeto3.View.JanelaProduto" SizeToContent="WidthAndHeight">
+	x:Class="Projeto3.View.NovoProduto" SizeToContent="WidthAndHeight">
 
 <Grid VerticalAlignment="Center" MinWidth="460">
 	<Grid.ColumnDefinitions>

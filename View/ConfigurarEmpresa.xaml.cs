@@ -1,5 +1,3 @@
-using System;
-
 using Avalonia.Interactivity;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
@@ -34,5 +32,4 @@ namespace Projeto3.View
 			Close();
 		}
 	}
-
 }

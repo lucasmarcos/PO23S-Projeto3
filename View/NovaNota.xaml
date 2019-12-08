@@ -1,17 +1,18 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:Projeto3.View;assembly=Projeto3"
-	x:Class="Projeto3.View.JanelaNovaNota" SizeToContent="WidthAndHeight">
+	x:Class="Projeto3.View.NovaNota" SizeToContent="WidthAndHeight">
 
 <StackPanel>
-	<local:NotaEmpresa DataContext="{Binding}"/>
+	<local:NotaEmpresa DataContext="{Binding Empresa}"/>
+	<Button Click="ConfigurarEmpresa" Content="Configurar Empresa"/>
 
 	<Button Content="Widget do Cliente Selecionado"/>
 	<Button Content="X Tchau Cliente Selectionado"/>
-	<Button Content="Selectionar Cliente" Click="SelecionarCliente"/>
+	<Button Click="SelecionarCliente" Content="Selectionar Cliente"/>
 
 	<Button Content="Widget da Tabela dos Produtos"/>
-	<Button Content="Adicionar Produto" Click="AdicionarProduto"/>
+	<Button Click="AdicionarProduto" Content="Adicionar Produto"/>
 
 	<Button Content="Emitir"/>
 </StackPanel>

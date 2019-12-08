@@ -1,11 +1,13 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
+using Projeto3.DAO;
+
 namespace Projeto3.View
 {
-	public class JanelaNotas : Window
+	public class ListarClientes : Window
 	{
-		public JanelaNotas()
+		public ListarClientes()
 		{
 			InitializeComponent();
 		}
@@ -13,6 +15,11 @@ namespace Projeto3.View
 		private void InitializeComponent()
 		{
 			AvaloniaXamlLoader.Load(this);
+		}
+
+		public void SetDAO(DAOCliente dao)
+		{
+			DataContext = dao.ListarClientes();
 		}
 	}
 }

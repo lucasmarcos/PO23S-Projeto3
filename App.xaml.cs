@@ -1,10 +1,11 @@
+using System;
+
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 using Projeto3.DAO;
-using Projeto3.Model;
 using Projeto3.View;
 
 namespace Projeto3
@@ -38,13 +39,13 @@ namespace Projeto3
 
 		public static void MostarCliente(Window w)
 		{
-			var janelaCliente = new JanelaCliente {DAOCliente = _daoCliente};
+			var janelaCliente = new NovoCliente {DAOCliente = _daoCliente};
 			janelaCliente.ShowDialog(w);
 		}
 
 		public static void MostarProduto(Window w)
 		{
-			var janelaProduto = new JanelaProduto {DAOProduto = _daoProduto};
+			var janelaProduto = new NovoProduto {DAOProduto = _daoProduto};
 			janelaProduto.ShowDialog(w);
 		}
 
@@ -53,7 +54,7 @@ namespace Projeto3
 			var nota = _daoNota.Buscar(100);
 			nota.Empresa = _daoEmpresa.Buscar();
 
-			var janelaImprimir = new JanelaImprimir();
+			var janelaImprimir = new ImprimirNota();
 			janelaImprimir.SetNota(nota);
 			janelaImprimir.ShowDialog(w);
 		}
@@ -61,17 +62,40 @@ namespace Projeto3
 		public static void NovaNotaFiscal(Window w)
 		{
 			var empresa = _daoEmpresa.Buscar();
-			var janelaNovaNota = new JanelaNovaNota();
+			var janelaNovaNota = new NovaNota();
 			janelaNovaNota.SetEmpresa(empresa);
+			janelaNovaNota.SetDAONota(_daoNota);
 			janelaNovaNota.ShowDialog(w);
 		}
 
 		public static void ConfigurarEmpresa(Window w)
 		{
 			var empresa = _daoEmpresa.Buscar();
+
 			var configurarEmpresa = new ConfigurarEmpresa {DAOEmpresa = _daoEmpresa};
 			configurarEmpresa.SetEmpresa(empresa);
+			configurarEmpresa.Closed += (object sender, EventArgs e) => {
+				empresa = _daoEmpresa.Buscar();
+				if(w is NovaNota) {
+					((NovaNota) w).SetEmpresa(empresa);
+				}
+			};
+
 			configurarEmpresa.ShowDialog(w);
+		}
+
+		public static void ListarClientes(Window w)
+		{
+			var listarClientes = new ListarClientes();
+			listarClientes.SetDAO(_daoCliente);
+			listarClientes.ShowDialog(w);
+		}
+
+		public static void ListarProdutos(Window w)
+		{
+			var janelaListarProdutos = new ListarProdutos();
+			janelaListarProdutos.SetDAO(_daoProduto);
+			janelaListarProdutos.ShowDialog(w);
 		}
 	}
 }
