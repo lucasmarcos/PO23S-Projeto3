@@ -8,6 +8,7 @@
 	<Button Click="BotaoProduto" Content="Novo Produto"/>
 	<Button Click="BotaoNotas"   Content="Re-Imprimir Nota Fiscal"/>
 	<Button Click="BotaoEmitir"  Content="Emitir Nova Nota Fiscal"/>
+	<Button Click="BotaoEmitir"  Content="Configurar Empresa"/>
 </StackPanel>
 
 </Window>

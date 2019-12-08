@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS produto_comprado;
 DROP TABLE IF EXISTS nota;
 DROP TABLE IF EXISTS produto;
 DROP TABLE IF EXISTS cliente;
+DROP TABLE IF EXISTS configuracao;
 
 CREATE TABLE cliente (
 	codigo SERIAL PRIMARY KEY,
@@ -34,6 +35,11 @@ CREATE TABLE produto_comprado (
 	quantidade INT
 );
 
+CREATE TABLE configuracao (
+	chave VARCHAR PRIMARY KEY,
+	valor VARCHAR
+);
+
 INSERT INTO cliente (codigo, nome, cpf,	endereco, bairro, cep, cidade, telefone, uf) VALUES
 	(100, 'Angela Abar', '12345678910', 'Padaria', 'Centro', '9', 'Tulsa', '12', 'OK');
 
@@ -49,3 +55,13 @@ INSERT INTO produto_comprado (nota, produto, quantidade) VALUES
 	(100, 100, 2),
 	(100, 101, 5000),
 	(100, 102, 5);
+
+INSERT INTO configuracao (chave, valor) VALUES
+	('empresa.nome',     'Valve'),
+	('empresa.cnpj',     '10987654321'),
+	('empresa.uf',       'PR'),
+	('empresa.bairro',   'PR'),
+	('empresa.cidade',   'PR'),
+	('empresa.telefone', 'PR'),
+	('empresa.cep',      'PR'),
+	('empresa.rua',      'Rua Goias, 92');
