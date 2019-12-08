@@ -1,3 +1,50 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="Projeto3.View.ConfigurarEmpresa" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight"/>
+	x:Class="Projeto3.View.ConfigurarEmpresa" SizeToContent="WidthAndHeight">
+
+	<Grid VerticalAlignment="Center" MinWidth="460">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Nome"/>
+		<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Nome}"/>
+
+		<TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="CNPJ"/>
+		<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CNPJ}"/>
+
+		<TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Rua"/>
+		<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Rua}"/>
+
+		<TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Bairro"/>
+		<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Bairro}"/>
+
+		<TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="CEP"/>
+		<TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CEP}"/>
+
+		<TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Cidade"/>
+		<TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Cidade}"/>
+
+		<TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Telefone"/>
+		<TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Telefone}"/>
+
+		<TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="UF"/>
+		<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding UF}"/>
+
+		<Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Click="Salvar" Content="Salvar"/>
+	</Grid>
+
+</Window>

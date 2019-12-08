@@ -1,7 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:Projeto3.View;assembly=Projeto3"
-	x:Class="Projeto3.View.JanelaImprimir" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
+	x:Class="Projeto3.View.JanelaImprimir" SizeToContent="WidthAndHeight">
 
 <StackPanel>
 	<TextBlock FontSize="24" FontWeight="Bold" Text="Nota Fiscal"/>

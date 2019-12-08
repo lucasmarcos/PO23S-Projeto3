@@ -69,7 +69,7 @@ namespace Projeto3
 		public static void ConfigurarEmpresa(Window w)
 		{
 			var empresa = _daoEmpresa.Buscar();
-			var configurarEmpresa = new ConfigurarEmpresa();
+			var configurarEmpresa = new ConfigurarEmpresa {DAOEmpresa = _daoEmpresa};
 			configurarEmpresa.SetEmpresa(empresa);
 			configurarEmpresa.ShowDialog(w);
 		}

@@ -1,9 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="Projeto3.View.JanelaPrincipal"
-	Title="Bem-vindo | Projeto 3" FontFamily="Source Sans Pro" FontSize="16" SizeToContent="WidthAndHeight">
+	Title="Bem-vindo" SizeToContent="WidthAndHeight">
 
-<StackPanel Margin="8" MinWidth="360" VerticalAlignment="Center">
+<StackPanel VerticalAlignment="Center">
 	<Button Click="BotaoCliente" Content="Novo Cliente"/>
 	<Button Click="BotaoProduto" Content="Novo Produto"/>
 	<Button Click="BotaoNotas"   Content="Re-Imprimir Nota Fiscal"/>
