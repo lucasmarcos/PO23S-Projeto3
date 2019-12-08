@@ -1,3 +1,5 @@
+using System;
+
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -26,7 +28,11 @@ namespace Projeto3.View
 		{
 			var dg = this.FindControl<DataGrid>("DataGridProdutos");
 			var p = (Produto) dg.SelectedItem;
-			CallBack.AdicionarProduto(p);
+
+			var nud = this.FindControl<NumericUpDown>("Quantidade");
+			var q = (Int32) nud.Value;
+
+			CallBack.AdicionarProduto(p, q);
 			Close();
 		}
 

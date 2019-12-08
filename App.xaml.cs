@@ -1,11 +1,10 @@
-using System;
-
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
 using Projeto3.DAO;
+using Projeto3.Model;
 using Projeto3.View;
 
 namespace Projeto3
@@ -50,14 +49,11 @@ namespace Projeto3
 			janelaProduto.ShowDialog(w);
 		}
 
-		public static void MostarNotaFiscal(Window w)
+		public static void MostarNotaFiscal(Nota n)
 		{
-			var nota = _daoNota.Buscar(100);
-			nota.Empresa = _daoEmpresa.Buscar();
-
 			var janelaImprimir = new ImprimirNota();
-			janelaImprimir.SetNota(nota);
-			janelaImprimir.ShowDialog(w);
+			janelaImprimir.SetNota(n);
+			janelaImprimir.Show();
 		}
 
 		public static void NovaNotaFiscal(Window w)

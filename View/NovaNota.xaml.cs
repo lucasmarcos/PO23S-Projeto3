@@ -15,10 +15,13 @@ namespace Projeto3.View
 	{
 		public DAONota DAONota { get; set; }
 		public Empresa Empresa { get; set; }
+		private Button BotaoSelecionar;
 
 		public NovaNota()
 		{
 			InitializeComponent();
+			BotaoSelecionar = this.FindControl<Button>("BotaoSelecionar");
+
 			DataContext = new Nota();
 		}
 
@@ -40,11 +43,13 @@ namespace Projeto3.View
 		public void SelecionarCliente(Cliente c)
 		{
 			((Nota) DataContext).Cliente = c;
+			BotaoSelecionar.IsVisible = false;
 		}
 
 		public void RemoverCliente(object s, RoutedEventArgs e)
 		{
 			((Nota) DataContext).Cliente = null;
+			BotaoSelecionar.IsVisible = true;
 		}
 
 		public void AdicionarProduto(object s, RoutedEventArgs e)
@@ -52,14 +57,18 @@ namespace Projeto3.View
 			App.ListarProdutos(this);
 		}
 
-		public void AdicionarProduto(Produto p)
+		public void AdicionarProduto(Produto p, Int32 q)
 		{
-			((Nota) DataContext).Produtos.Add(Tuple.Create(p, 1, p.Valor));
+			((Nota) DataContext).Produtos.Add(Tuple.Create(p, q, p.Valor * q));
 		}
 
 		public void Emitir(object s, RoutedEventArgs e)
 		{
-			((Nota) DataContext).Debug();
+			var nota = (Nota) DataContext;
+			nota.CalcularTotal();
+			DAONota.Cadastrar(nota);
+			App.MostarNotaFiscal(nota);
+			Close();
 		}
 	}
 }

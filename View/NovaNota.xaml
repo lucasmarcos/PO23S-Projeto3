@@ -8,9 +8,10 @@
 
 	<StackPanel Orientation="Horizontal" IsVisible="{Binding !!Cliente}">
 		<local:NotaCliente DataContext="{Binding Cliente}"/>
+		<Button Click="RemoverCliente" Content="Remover"/>
 	</StackPanel>
 
-	<Button Click="SelecionarCliente" Content="Selectionar Cliente"/>
+	<Button x:Name="BotaoSelecionar" Click="SelecionarCliente" Content="Selectionar Cliente"/>
 
 	<local:NotaProdutoComprado DataContext="{Binding Produtos}"/>
 	<Button Click="AdicionarProduto" Content="Adicionar Produto"/>

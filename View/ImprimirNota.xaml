@@ -10,13 +10,8 @@
 
 	<local:NotaCliente DataContext="{Binding Cliente}"/>
 
-	<ItemsControl Items="{Binding Produtos}">
-		<ItemsControl.ItemTemplate>
-			<DataTemplate>
-				<local:NotaProdutoComprado DataContext="{Binding}"/>
-			</DataTemplate>
-		</ItemsControl.ItemTemplate>
-	</ItemsControl>
+	<!-- Maybe Items Simpler -->
+	<local:NotaProdutoComprado DataContext="{Binding Produtos}"/>
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -27,11 +22,16 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 			<ColumnDefinition/>
+			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Total}"/>
-		<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Data}"/>
-		<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Codigo}"/>
+		<TextBlock FontWeight="Bold" Grid.Row="0" Grid.Column="0" Text="Total"/>
+		<TextBlock FontWeight="Bold" Grid.Row="0" Grid.Column="1" Text="Data"/>
+		<TextBlock FontWeight="Bold" Grid.Row="0" Grid.Column="2" Text="Codigo"/>
+
+		<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Total}"/>
+		<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Data}"/>
+		<TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Codigo}"/>
 	</Grid>
 </StackPanel>
 
