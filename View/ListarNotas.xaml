@@ -3,7 +3,7 @@
 	x:Class="Projeto3.View.ListarNotas" SizeToContent="WidthAndHeight">
 
 <StackPanel>
-	<DataGrid Items="{Binding}" AutoGenerateColumns="True"/>
+	<DataGrid Items="{Binding}" AutoGenerateColumns="True" IsReadOnly="True"/>
 
 	<Button Content="Selecionar"/>
 </StackPanel>

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 using Avalonia.Interactivity;
 using Avalonia.Controls;
@@ -11,22 +13,16 @@ namespace Projeto3.View
 {
 	public class NovaNota : Window
 	{
-		private DAONota    _daoNota;
+		public DAONota DAONota { get; set; }
+		public Empresa Empresa { get; set; }
 
-		public void SetEmpresa(Empresa empresa)
-		{
-			DataContext = new Nota();
-			((Nota) DataContext).Empresa = empresa;
-		}
-
-		public void SetDAONota(DAONota dao)
-		{
-			_daoNota = dao;
-		}
+		private ObservableCollection<Tuple<Produto, Int32, Int32>> _produtos;
 
 		public NovaNota()
 		{
 			InitializeComponent();
+			_produtos = new ObservableCollection<Tuple<Produto, Int32, Int32>>();
+			DataContext = new Nota {Produtos = _produtos};
 		}
 
 		private void InitializeComponent()
@@ -34,9 +30,9 @@ namespace Projeto3.View
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		public void ConfigurarEmpresa(object s, RoutedEventArgs e)
+		public void Atualizar()
 		{
-			App.ConfigurarEmpresa(this);
+			((Nota) DataContext).Empresa = Empresa;
 		}
 
 		public void SelecionarCliente(object s, RoutedEventArgs e)
@@ -44,9 +40,24 @@ namespace Projeto3.View
 			App.ListarClientes(this);
 		}
 
+		public void SelecionarCliente(Cliente c)
+		{
+			((Nota) DataContext).Cliente = c;
+		}
+
 		public void AdicionarProduto(object s, RoutedEventArgs e)
 		{
 			App.ListarProdutos(this);
+		}
+
+		public void AdicionarProduto(Produto p)
+		{
+			_produtos.Add(Tuple.Create(p, 1, p.Valor));
+		}
+
+		public void Emitir(object s, RoutedEventArgs e)
+		{
+			((Nota) DataContext).Debug();
 		}
 	}
 }

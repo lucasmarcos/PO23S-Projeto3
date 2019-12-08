@@ -3,11 +3,8 @@
 	x:Class="Projeto3.View.ListarProdutos" SizeToContent="WidthAndHeight">
 
 <StackPanel>
-	<TextBlock Text="olá viadinho"/>
-
-	<DataGrid Items="{Binding}" AutoGenerateColumns="True"/>
-
-	<Button Content="Selecionar"/>
+	<DataGrid x:Name="DataGridProdutos" Items="{Binding}" AutoGenerateColumns="True" IsReadOnly="True"/>
+	<Button Click="Selecionar" Content="Selecionar"/>
 </StackPanel>
 
 </Window>

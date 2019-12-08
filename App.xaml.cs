@@ -34,6 +34,7 @@ namespace Projeto3
 		{
 			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
 				desktop.MainWindow = new JanelaPrincipal();
+
 			base.OnFrameworkInitializationCompleted();
 		}
 
@@ -61,41 +62,30 @@ namespace Projeto3
 
 		public static void NovaNotaFiscal(Window w)
 		{
-			var empresa = _daoEmpresa.Buscar();
-			var janelaNovaNota = new NovaNota();
-			janelaNovaNota.SetEmpresa(empresa);
-			janelaNovaNota.SetDAONota(_daoNota);
+			var janelaNovaNota = new NovaNota {DAONota = _daoNota, Empresa = _daoEmpresa.Buscar()};
+			janelaNovaNota.Atualizar();
 			janelaNovaNota.ShowDialog(w);
 		}
 
 		public static void ConfigurarEmpresa(Window w)
 		{
-			var empresa = _daoEmpresa.Buscar();
-
 			var configurarEmpresa = new ConfigurarEmpresa {DAOEmpresa = _daoEmpresa};
-			configurarEmpresa.SetEmpresa(empresa);
-			configurarEmpresa.Closed += (object sender, EventArgs e) => {
-				empresa = _daoEmpresa.Buscar();
-				if(w is NovaNota) {
-					((NovaNota) w).SetEmpresa(empresa);
-				}
-			};
-
+			configurarEmpresa.Atualizar();
 			configurarEmpresa.ShowDialog(w);
 		}
 
-		public static void ListarClientes(Window w)
+		public static void ListarClientes(NovaNota w)
 		{
-			var listarClientes = new ListarClientes();
-			listarClientes.SetDAO(_daoCliente);
+			var listarClientes = new ListarClientes {DAOCliente = _daoCliente, CallBack = w};
+			listarClientes.Atualizar();
 			listarClientes.ShowDialog(w);
 		}
 
-		public static void ListarProdutos(Window w)
+		public static void ListarProdutos(NovaNota w)
 		{
-			var janelaListarProdutos = new ListarProdutos();
-			janelaListarProdutos.SetDAO(_daoProduto);
-			janelaListarProdutos.ShowDialog(w);
+			var listarProdutos = new ListarProdutos {DAOProduto = _daoProduto, CallBack = w};
+			listarProdutos.Atualizar();
+			listarProdutos.ShowDialog(w);
 		}
 	}
 }

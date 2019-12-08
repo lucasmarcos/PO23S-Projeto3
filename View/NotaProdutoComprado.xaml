@@ -2,12 +2,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Class="Projeto3.View.NotaProdutoComprado">
 
-<StackPanel Orientation="Horizontal">
-    <TextBlock Text="{Binding Item1.Nome}"/>
-    <TextBlock Text="{Binding Item1.Valor}"/>
-    <TextBlock Text="{Binding Item1.Unidade}"/>
-    <TextBlock Text="{Binding Item2}"/>
-    <TextBlock Text="{Binding Item3}"/>
-</StackPanel>
+<DataGrid x:Name="DataGridProdutos" Items="{Binding}" Width="800" Height="450" IsReadOnly="True">
+	<DataGrid.Columns>
+    	<DataGridTextColumn Header="Cód."       Binding="{Binding Item1.Codigo}"/>
+    	<DataGridTextColumn Header="Nome"       Binding="{Binding Item1.Nome}"/>
+    	<DataGridTextColumn Header="Valor"      Binding="{Binding Item1.Valor}"/>
+    	<DataGridTextColumn Header="Unidade"    Binding="{Binding Item1.Unidade}"/>
+    	<DataGridTextColumn Header="Quantidade" Binding="{Binding Item2}"/>
+    	<DataGridTextColumn Header="Total"      Binding="{Binding Item3}"/>
+	</DataGrid.Columns>
+</DataGrid>
 
 </UserControl>

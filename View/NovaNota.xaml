@@ -5,16 +5,17 @@
 
 <StackPanel>
 	<local:NotaEmpresa DataContext="{Binding Empresa}"/>
-	<Button Click="ConfigurarEmpresa" Content="Configurar Empresa"/>
 
-	<Button Content="Widget do Cliente Selecionado"/>
-	<Button Content="X Tchau Cliente Selectionado"/>
+	<StackPanel Orientation="Horizontal">
+		<local:NotaCliente DataContext="{Binding Cliente}"/>
+		<Button Content="X"/>
+	</StackPanel>
 	<Button Click="SelecionarCliente" Content="Selectionar Cliente"/>
 
-	<Button Content="Widget da Tabela dos Produtos"/>
+	<local:NotaProdutoComprado DataContext="{Binding Produtos}"/>
 	<Button Click="AdicionarProduto" Content="Adicionar Produto"/>
 
-	<Button Content="Emitir"/>
+	<Button Click="Emitir" Content="Emitir"/>
 </StackPanel>
 
 </Window>

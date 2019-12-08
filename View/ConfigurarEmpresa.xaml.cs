@@ -11,11 +11,6 @@ namespace Projeto3.View
 	{
 		public DAOEmpresa DAOEmpresa { get; set; }
 
-		public void SetEmpresa(Empresa empresa)
-		{
-			DataContext = empresa;
-		}
-
 		public ConfigurarEmpresa()
 		{
 			InitializeComponent();
@@ -30,6 +25,11 @@ namespace Projeto3.View
 		{
 			DAOEmpresa.Salvar((Empresa) DataContext);
 			Close();
+		}
+
+		public void Atualizar()
+		{
+			DataContext = DAOEmpresa.Buscar();
 		}
 	}
 }
