@@ -78,7 +78,7 @@ namespace Projeto3.View
 			DAONota.Cadastrar(nota);
 			Close();
 
-			App.MostarNotaFiscal(nota);
+			App.Imprimir(nota);
 		}
 	}
 }

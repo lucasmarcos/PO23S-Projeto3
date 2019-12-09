@@ -3,11 +3,19 @@
 	x:Class="Projeto3.View.ListarNotas" SizeToContent="WidthAndHeight">
 
 <DockPanel>
-	<DataGrid DockPanel.Dock="Top" Items="{Binding}" AutoGenerateColumns="True" IsReadOnly="True"/>
+	<DataGrid x:Name="Notas" DockPanel.Dock="Top" Items="{Binding}" IsReadOnly="True">
+		<DataGrid.Columns>
+			<DataGridTextColumn Header="Cód." Binding="{Binding Codigo}"/>
+			<DataGridTextColumn Header="Total (R$)" Binding="{Binding Total}"/>
+			<DataGridTextColumn Header="Data" Binding="{Binding Data}"/>
+			<DataGridTextColumn Header="Cliente" Binding="{Binding Cliente.Nome}"/>
+			<DataGridTextColumn Header="N# Produtos" Binding="{Binding Produtos.Count}"/>
+		</DataGrid.Columns>
+	</DataGrid>
 
 	<Grid ColumnDefinitions="*,*" RowDefinitions="Auto" DockPanel.Dock="Bottom">
-		<Button Grid.Row="0" Grid.Column="0" Content="Remover"/>
-		<Button Grid.Row="0" Grid.Column="1" Content="Imprimir"/>
+		<Button Grid.Row="0" Grid.Column="0" Click="Remover" Content="Remover"/>
+		<Button Grid.Row="0" Grid.Column="1" Click="Imprimir" Content="Imprimir"/>
 	</Grid>
 </DockPanel>
 

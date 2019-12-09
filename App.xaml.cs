@@ -50,7 +50,7 @@ namespace Projeto3
 			janelaProduto.ShowDialog(w);
 		}
 
-		public static void MostarNotaFiscal(Nota n)
+		public static void Imprimir(Nota n)
 		{
 			var janelaImprimir = new ImprimirNota();
 			janelaImprimir.SetNota(n);
@@ -78,7 +78,7 @@ namespace Projeto3
 
 		public static void MostrarNotas(Window w)
 		{
-			var listarNotas = new ListarNotas {DAONota = _daoNota};
+			var listarNotas = new ListarNotas {DAONota = _daoNota, Empresa = _daoEmpresa.Buscar()};
 			listarNotas.Atualizar();
 			listarNotas.ShowDialog(w);
 		}
