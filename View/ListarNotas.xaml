@@ -2,10 +2,13 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="Projeto3.View.ListarNotas" SizeToContent="WidthAndHeight">
 
-<StackPanel>
-	<DataGrid Items="{Binding}" AutoGenerateColumns="True" IsReadOnly="True"/>
+<DockPanel>
+	<DataGrid DockPanel.Dock="Top" Items="{Binding}" AutoGenerateColumns="True" IsReadOnly="True"/>
 
-	<Button Content="Selecionar"/>
-</StackPanel>
+	<Grid ColumnDefinitions="*,*" RowDefinitions="Auto" DockPanel.Dock="Bottom">
+		<Button Grid.Row="0" Grid.Column="0" Content="Remover"/>
+		<Button Grid.Row="0" Grid.Column="1" Content="Imprimir"/>
+	</Grid>
+</DockPanel>
 
 </Window>

@@ -63,6 +63,13 @@ namespace Projeto3
 			janelaNovaNota.ShowDialog(w);
 		}
 
+		public static void MostrarNotas(Window w)
+		{
+			var listarNotas = new ListarNotas {DAONota = _daoNota};
+			listarNotas.Atualizar();
+			listarNotas.ShowDialog(w);
+		}
+
 		public static void ConfigurarEmpresa(Window w)
 		{
 			var configurarEmpresa = new ConfigurarEmpresa {DAOEmpresa = _daoEmpresa};

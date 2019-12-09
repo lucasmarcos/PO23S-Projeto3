@@ -62,13 +62,23 @@ namespace Projeto3.View
 			((Nota) DataContext).Produtos.Add(Tuple.Create(p, q, p.Valor * q));
 		}
 
+		public void RemoverProduto(object s, RoutedEventArgs e)
+		{
+			var wat = this.FindControl<NotaProdutoComprado>("ProdutosComprados");
+			var www = wat.FindControl<DataGrid>("DataGridProdutos");
+			var p = (Tuple<Produto, Int32, Int32>) www.SelectedItem;
+			((Nota) DataContext).Produtos.Remove(p);
+		}
+
 		public void Emitir(object s, RoutedEventArgs e)
 		{
 			var nota = (Nota) DataContext;
 			nota.CalcularTotal();
+			nota.Data = DateTime.Now;
 			DAONota.Cadastrar(nota);
-			App.MostarNotaFiscal(nota);
 			Close();
+
+			App.MostarNotaFiscal(nota);
 		}
 	}
 }

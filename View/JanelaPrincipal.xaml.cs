@@ -28,6 +28,7 @@ namespace Projeto3.View
 
 		public void BotaoNotas(object s, RoutedEventArgs e)
 		{
+			App.MostrarNotas(this);
 		}
 
 		public void BotaoEmitir(object s, RoutedEventArgs e)

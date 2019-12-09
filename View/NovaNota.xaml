@@ -3,20 +3,30 @@
 	xmlns:local="clr-namespace:Projeto3.View;assembly=Projeto3"
 	x:Class="Projeto3.View.NovaNota" SizeToContent="WidthAndHeight">
 
-<StackPanel>
-	<local:NotaEmpresa DataContext="{Binding Empresa}"/>
+<DockPanel LastChildFill="False">
+	<StackPanel DockPanel.Dock="Top">
+		<local:NotaEmpresa DataContext="{Binding Empresa}"/>
 
-	<StackPanel Orientation="Horizontal" IsVisible="{Binding !!Cliente}">
-		<local:NotaCliente DataContext="{Binding Cliente}"/>
-		<Button Click="RemoverCliente" Content="Remover"/>
+		<StackPanel Orientation="Horizontal" IsVisible="{Binding !!Cliente}">
+			<local:NotaCliente DataContext="{Binding Cliente}"/>
+			<Button Click="RemoverCliente" Content="Remover"/>
+		</StackPanel>
+
+		<Button x:Name="BotaoSelecionar" Click="SelecionarCliente" Content="Selectionar Cliente"/>
 	</StackPanel>
 
-	<Button x:Name="BotaoSelecionar" Click="SelecionarCliente" Content="Selectionar Cliente"/>
+	<StackPanel>
+		<local:NotaProdutoComprado x:Name="ProdutosComprados" DataContext="{Binding Produtos}"/>
 
-	<local:NotaProdutoComprado DataContext="{Binding Produtos}"/>
-	<Button Click="AdicionarProduto" Content="Adicionar Produto"/>
+		<Grid RowDefinitions="*" ColumnDefinitions="Auto,Auto">
+			<Button Grid.Row="0" Grid.Column="0" Click="RemoverProduto" Content="Remover Produto Selecionado"/>
+			<Button Grid.Row="0" Grid.Column="1" Click="AdicionarProduto" Content="Adicionar Produto"/>
+		</Grid>
+	</StackPanel>
 
-	<Button Click="Emitir" Content="Emitir"/>
-</StackPanel>
+	<StackPanel DockPanel.Dock="Bottom">
+		<Button Click="Emitir" Content="Emitir"/>
+	</StackPanel>
+</DockPanel>
 
 </Window>
