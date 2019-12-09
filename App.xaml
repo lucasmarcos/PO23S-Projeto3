@@ -27,6 +27,23 @@
 		<Setter Property="Margin" Value="8"/>
 	</Style>
 
+	<Style Selector="DataGrid">
+	    <Setter Property="RowBackground" Value="#00FFFFFF"/>
+		<Setter Property="AlternatingRowBackground" Value="#00FFFFFF"/>
+
+    	<Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+		<Setter Property="GridLinesVisibility" Value="All"/>
+		<Setter Property="HorizontalGridLinesBrush" Value="#00000000"/>
+		<Setter Property="VerticalGridLinesBrush" Value="#00000000"/>
+
+    	<Setter Property="BorderBrush" Value="#00000000"/>
+    	<Setter Property="BorderThickness" Value="1"/>
+	</Style>
+
+	<Style Selector="DataGridColumnHeader">
+		<Setter Property="FontWeight" Value="Bold"/>
+	</Style>
+
 </Application.Styles>
 
 </Application>

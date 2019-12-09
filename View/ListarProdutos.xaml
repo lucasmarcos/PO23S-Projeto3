@@ -12,10 +12,10 @@
 		</DataGrid.Columns>
 	</DataGrid>
 
-	<StackPanel Orientation="Horizontal">
-		<TextBlock Width="400" VerticalAlignment="Center" TextAlignment="Right" Text="Quantidade"/>
-		<NumericUpDown x:Name="Quantidade" Minimum="1" Value="1"/>
-	</StackPanel>
+	<Grid RowDefinitions="*" ColumnDefinitions="*,Auto">
+		<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" Text="Quantidade"/>
+		<NumericUpDown Grid.Row="0" Grid.Column="1" x:Name="Quantidade" Minimum="1" Value="1"/>
+	</Grid>
 
 	<Button Click="Selecionar" Content="Selecionar"/>
 </StackPanel>

@@ -1,3 +1,5 @@
+using System;
+
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -53,20 +55,22 @@ namespace Projeto3
 		public static void Imprimir(Nota n)
 		{
 			var janelaImprimir = new ImprimirNota();
+			var compNota = janelaImprimir.FindControl<StackPanel>("Nota");
+
 			janelaImprimir.SetNota(n);
 			janelaImprimir.Show();
 
-			var compNota = janelaImprimir.FindControl<StackPanel>("Nota");
-
-			int w = 794;
-			int h = 1123;
-			var pixelSize = new PixelSize(w, h);
+			var pixelSize = new PixelSize(794, 1123);
 			var dpi = new Vector(96, 96);
 
-			var bitmap = new RenderTargetBitmap(pixelSize, dpi);
+			janelaImprimir.Closed += (object s, EventArgs e) =>
+			{
+				Console.WriteLine("imprimindo em nota.bmp");
 
-			bitmap.Render(compNota);
-			bitmap.Save("nota.bmp");
+				var bitmap = new RenderTargetBitmap(pixelSize, dpi);
+				bitmap.Render(compNota);
+				bitmap.Save("nota.bmp");
+			};
 		}
 
 		public static void NovaNotaFiscal(Window w)

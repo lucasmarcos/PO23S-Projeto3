@@ -1,31 +1,31 @@
 <Window xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:Projeto3.View;assembly=Projeto3"
-	x:Class="Projeto3.View.NovaNota" SizeToContent="WidthAndHeight">
+	x:Class="Projeto3.View.NovaNota">
 
-<DockPanel LastChildFill="False">
+<DockPanel>
 	<StackPanel DockPanel.Dock="Top">
 		<local:NotaEmpresa DataContext="{Binding Empresa}"/>
 
-		<StackPanel Orientation="Horizontal" IsVisible="{Binding !!Cliente}">
-			<local:NotaCliente DataContext="{Binding Cliente}"/>
-			<Button Click="RemoverCliente" Content="Remover"/>
-		</StackPanel>
+		<Grid RowDefinitions="*" ColumnDefinitions="*,Auto" IsVisible="{Binding !!Cliente}">
+			<local:NotaCliente Grid.Row="0" Grid.Column="0" DataContext="{Binding Cliente}"/>
+			<Button Grid.Row="0" Grid.Column="1" Click="RemoverCliente" Content="Remover"/>
+		</Grid>
 
 		<Button x:Name="BotaoSelecionar" Click="SelecionarCliente" Content="Selectionar Cliente"/>
 	</StackPanel>
 
+	<Grid RowDefinitions="*" ColumnDefinitions="*" DockPanel.Dock="Bottom">
+		<Button Grid.Row="0" Grid.Column="0" Click="Emitir" Content="Emitir"/>
+	</Grid>
+
 	<StackPanel>
 		<local:NotaProdutoComprado x:Name="ProdutosComprados" DataContext="{Binding Produtos}"/>
 
-		<Grid RowDefinitions="*" ColumnDefinitions="Auto,Auto">
+		<Grid RowDefinitions="*" ColumnDefinitions="*,*">
 			<Button Grid.Row="0" Grid.Column="0" Click="RemoverProduto" Content="Remover Produto Selecionado"/>
 			<Button Grid.Row="0" Grid.Column="1" Click="AdicionarProduto" Content="Adicionar Produto"/>
 		</Grid>
-	</StackPanel>
-
-	<StackPanel DockPanel.Dock="Bottom">
-		<Button Click="Emitir" Content="Emitir"/>
 	</StackPanel>
 </DockPanel>
 

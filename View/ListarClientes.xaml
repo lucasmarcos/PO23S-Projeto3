@@ -5,9 +5,14 @@
 <StackPanel>
 	<DataGrid x:Name="DataGridClientes" Items="{Binding}" IsReadOnly="True">
 		<DataGrid.Columns>
-			<DataGridTextColumn Header="Cód." Binding="{Binding Codigo}"/>
-			<DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-			<DataGridTextColumn Header="CPF" Binding="{Binding CPF}"/>
+			<DataGridTextColumn Header="Cód."     Binding="{Binding Codigo}"/>
+			<DataGridTextColumn Header="Nome"     Binding="{Binding Nome}"/>
+			<DataGridTextColumn Header="CPF"      Binding="{Binding CPF}"/>
+			<DataGridTextColumn Header="Telefone" Binding="{Binding Telefone}"/>
+			<DataGridTextColumn Header="Endereço" Binding="{Binding Endereco}"/>
+			<DataGridTextColumn Header="Cidade"   Binding="{Binding Cidade}"/>
+			<DataGridTextColumn Header="UF"       Binding="{Binding UF}"/>
+			<DataGridTextColumn Header="CEP"      Binding="{Binding CEP}"/>
 		</DataGrid.Columns>
 	</DataGrid>
 
