@@ -3,7 +3,7 @@
 	xmlns:local="clr-namespace:Projeto3.View;assembly=Projeto3"
 	x:Class="Projeto3.View.ImprimirNota" SizeToContent="WidthAndHeight">
 
-<StackPanel>
+<StackPanel x:Name="Nota">
 	<TextBlock FontSize="24" FontWeight="Bold" Text="Nota Fiscal"/>
 
 	<local:NotaEmpresa DataContext="{Binding Empresa}"/>

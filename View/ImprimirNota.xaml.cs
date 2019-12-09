@@ -1,5 +1,9 @@
+using System;
+
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media.Imaging;
 
 using Projeto3.Model;
 

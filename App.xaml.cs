@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media.Imaging;
 
 using Projeto3.DAO;
 using Projeto3.Model;
@@ -54,6 +55,18 @@ namespace Projeto3
 			var janelaImprimir = new ImprimirNota();
 			janelaImprimir.SetNota(n);
 			janelaImprimir.Show();
+
+			var compNota = janelaImprimir.FindControl<StackPanel>("Nota");
+
+			int w = 794;
+			int h = 1123;
+			var pixelSize = new PixelSize(w, h);
+			var dpi = new Vector(96, 96);
+
+			var bitmap = new RenderTargetBitmap(pixelSize, dpi);
+
+			bitmap.Render(compNota);
+			bitmap.Save("nota.bmp");
 		}
 
 		public static void NovaNotaFiscal(Window w)
