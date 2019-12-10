@@ -12,7 +12,12 @@ namespace Projeto3.Model
 		public Int32 Total { get; set; }
 		public DateTime Data { get; set; }
 
-		public ObservableCollection<Tuple<Produto, Int32, Int32>> Produtos { get; set; }
+		private ObservableCollection<Tuple<Produto, Int32, Int32>> _produtos;
+		public ObservableCollection<Tuple<Produto, Int32, Int32>> Produtos
+		{ 
+			get => _produtos;
+			set => this.RaiseAndSetIfChanged(ref _produtos, value);
+		}
 
 		private Empresa _empresa;
 		public Empresa Empresa

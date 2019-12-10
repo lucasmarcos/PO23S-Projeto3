@@ -60,6 +60,7 @@ namespace Projeto3.View
 		public void AdicionarProduto(Produto p, Int32 q)
 		{
 			((Nota) DataContext).Produtos.Add(Tuple.Create(p, q, p.Valor * q));
+			((Nota) DataContext).Unificar();
 		}
 
 		public void RemoverProduto(object s, RoutedEventArgs e)
