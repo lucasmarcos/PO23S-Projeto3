@@ -5,11 +5,11 @@
 <DataGrid x:Name="DataGridProdutos" Items="{Binding}" IsReadOnly="True" AlternatingRowBackground="#00FFFFFF" Background="#00FFFFFF">
 	<DataGrid.Columns>
     	<DataGridTextColumn Width="*" Header="Cód."       Binding="{Binding Item1.Codigo}"/>
-    	<DataGridTextColumn Width="*" Header="Nome"       Binding="{Binding Item1.Nome}"/>
-    	<DataGridTextColumn Width="*" Header="Valor"      Binding="{Binding Item1.Valor}"/>
+    	<DataGridTextColumn Width="2*" Header="Nome"       Binding="{Binding Item1.Nome}"/>
+    	<DataGridTextColumn Width="*" Header="Valor (R$)" Binding="{Binding Item1.Valor}"/>
     	<DataGridTextColumn Width="*" Header="Unidade"    Binding="{Binding Item1.Unidade}"/>
     	<DataGridTextColumn Width="*" Header="Quantidade" Binding="{Binding Item2}"/>
-    	<DataGridTextColumn Width="*" Header="Total"      Binding="{Binding Item3}"/>
+    	<DataGridTextColumn Width="*" Header="Total (R$)" Binding="{Binding Item3}"/>
 	</DataGrid.Columns>
 </DataGrid>
 

@@ -54,6 +54,8 @@ namespace Projeto3
 
 		public static void Imprimir(Nota n)
 		{
+			n.Unificar();
+
 			var janelaImprimir = new ImprimirNota();
 			var compNota = janelaImprimir.FindControl<StackPanel>("Nota");
 
@@ -63,13 +65,20 @@ namespace Projeto3
 			var pixelSize = new PixelSize(794, 1123);
 			var dpi = new Vector(96, 96);
 
-			janelaImprimir.Closed += (object s, EventArgs e) =>
+			var vezes = 0;
+			janelaImprimir.LayoutUpdated += (object s, EventArgs e) =>
 			{
-				Console.WriteLine("imprimindo em nota.bmp");
-
-				var bitmap = new RenderTargetBitmap(pixelSize, dpi);
-				bitmap.Render(compNota);
-				bitmap.Save("nota.bmp");
+				if(vezes < 1)
+				{
+					vezes++;
+				}
+				if(vezes == 1)
+				{
+					var bitmap = new RenderTargetBitmap(pixelSize, dpi);
+					bitmap.Render(compNota);
+					bitmap.Save("nota.bmp");
+					vezes++;
+				}
 			};
 		}
 
