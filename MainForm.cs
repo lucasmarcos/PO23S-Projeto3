@@ -9,5 +9,30 @@ namespace PO23S_Projeto3
 		{
 			InitializeComponent();
 		}
+
+		void NovoClienteClick(object sender, EventArgs e)
+		{
+	
+		}
+
+		void NovoProdutoClick(object sender, EventArgs e)
+		{
+	
+		}
+
+		void ListarNotasClick(object sender, EventArgs e)
+		{
+	
+		}
+
+		void EmitirClick(object sender, EventArgs e)
+		{
+	
+		}
+
+		void ConfigurarEmpresaClick(object sender, EventArgs e)
+		{
+	
+		}
 	}
 }
