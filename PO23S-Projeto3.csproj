@@ -111,6 +111,27 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\CadastrarCliente.resx">
+      <DependentUpon>CadastrarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CadastrarProduto.resx">
+      <DependentUpon>CadastrarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ConfigurarEmpresa.resx">
+      <DependentUpon>ConfigurarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Emitir.resx">
+      <DependentUpon>Emitir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListarClientes.resx">
+      <DependentUpon>ListarClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListarNotas.resx">
+      <DependentUpon>ListarNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListarProdutos.resx">
+      <DependentUpon>ListarProdutos.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

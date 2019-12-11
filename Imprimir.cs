@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Printing;
 
 namespace PO23S_Projeto3
 {
@@ -6,6 +7,8 @@ namespace PO23S_Projeto3
 	{
 		public Imprimir()
 		{
+			var printDocument = new PrintDocument();
+			printDocument.Print();
 		}
 	}
 }
