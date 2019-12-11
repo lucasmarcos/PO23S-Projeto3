@@ -2,40 +2,21 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
-using ReactiveUI;
-
 namespace Projeto3.Model
 {
-	public class Nota : ReactiveObject
+	public class Nota
 	{
-		public Int32 Codigo { get; set; }
-		public Int32 Total { get; set; }
+		public int Codigo { get; set; }
+		public int Total { get; set; }
 		public DateTime Data { get; set; }
 
-		private ObservableCollection<Tuple<Produto, Int32, Int32>> _produtos;
-		public ObservableCollection<Tuple<Produto, Int32, Int32>> Produtos
-		{ 
-			get => _produtos;
-			set => this.RaiseAndSetIfChanged(ref _produtos, value);
-		}
-
-		private Empresa _empresa;
-		public Empresa Empresa
-		{
-			get => _empresa;
-			set => this.RaiseAndSetIfChanged(ref _empresa, value);
-		}
-
-		private Cliente _cliente;
-		public Cliente Cliente
-		{
-			get => _cliente;
-			set => this.RaiseAndSetIfChanged(ref _cliente, value);
-		}
+		public ObservableCollection<Tuple<Produto, int, int>> Produtos;
+		public Empresa Empresa;
+		public Cliente Cliente;
 
 		public Nota()
 		{
-			Produtos = new ObservableCollection<Tuple<Produto, Int32, Int32>>();
+			Produtos = new ObservableCollection<Tuple<Produto, int, int>>();
 		}
 
 		public void CalcularTotal()
@@ -49,8 +30,8 @@ namespace Projeto3.Model
 
 		public void Unificar()
 		{
-			var map = new Dictionary<Int32, Int32>();
-			var prods = new Dictionary<Int32, Produto>();
+			var map = new Dictionary<int, int>();
+			var prods = new Dictionary<int, Produto>();
 
 			foreach (var p in Produtos)
 			{
@@ -63,7 +44,7 @@ namespace Projeto3.Model
 				map[p.Item1.Codigo] += p.Item2;
 			}
 
-			Produtos = new ObservableCollection<Tuple<Produto, Int32, Int32>>();
+			Produtos = new ObservableCollection<Tuple<Produto, int, int>>();
 			foreach (KeyValuePair<Int32, Int32> p in map)
 			{
 				var produto = prods[p.Key];
@@ -73,12 +54,12 @@ namespace Projeto3.Model
 
 		public void Debug()
 		{
-			_empresa.Debug();
-			Console.WriteLine($"nota:{Codigo}|{Data}|{Total}");
-			_cliente.Debug();
+			Empresa.Debug();
+			Console.WriteLine("nota:{Codigo}|{Data}|{Total}");
+			Cliente.Debug();
 			foreach (var p in Produtos)
 			{
-				Console.Write($"{p.Item2}, {p.Item3}");
+				Console.Write("{p.Item2}, {p.Item3}");
 				p.Item1.Debug();
 			}
 		}
