@@ -42,7 +42,7 @@ CREATE TABLE configuracao (
 
 -- INSERT INTO cliente (codigo, nome, cpf,	endereco, bairro, cep, cidade, telefone, uf) VALUES
 -- 	(100, 'Angela Abar', '12345678910', 'Padaria', 'Centro', '9', 'Tulsa', '12', 'OK');
- 
+
 -- INSERT INTO produto (codigo, nome, valor, unidade) VALUES
 -- 	(100, 'DualShock 5', 20000, 'cx.'),
 -- 	(101, 'Agua', 10, 'ml'),

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace PO23S_Projeto3
@@ -12,6 +12,6 @@ namespace PO23S_Projeto3
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());
 		}
-		
+
 	}
 }
